@@ -1,0 +1,7 @@
+@import url('/front-end/styles/global.css');
+
+/* CORRETO */
+body {
+    background-color: var(--cor-de-fundo-modo-claro);
+    color: var(--cor-da-aba-de-navegacao-modo-claro);
+}

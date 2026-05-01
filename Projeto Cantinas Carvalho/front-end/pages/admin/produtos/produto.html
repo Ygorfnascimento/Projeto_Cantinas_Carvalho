@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador - Produtos</title>
+    <link rel="stylesheet" href="produto.css" />
+    <link rel="icon" href="/front-end/assets/icons/logo.png" type="image/png" />
+
+  </head>
+
+  <body>
+    <header class="header-superior">
+      <div id="logo-container">
+        <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho"/>
+      </div>
+
+      <label class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <nav class="container-pages">
+      <div class="container-pages-links">
+        <a href="#" class="pages-links-página-atual">Produtos</a>
+        <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
+        <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
+        <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
+      </div>
+    </nav>
+
+    <div class="linha-decorativa"></div>
+
+    <section class="sessao-controles">
+      <div class="search-bar">
+        <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+        <input type="text" placeholder="Pesquisar produto..." />
+      </div>
+
+      <button class="container-button" id="btnAbrirNovo">
+        <img src="/front-end/assets/icons/btn_adicionar_produto.png" alt=" Botão de Adicionar Produto"/>
+        <span class="btn-novo-texto">Novo</span>
+      </button>
+    </section>
+
+    <main class="container-principal">
+      <div id="container-listagem" class="listagem-padrao">
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_hamburger.png" alt="Hambúrguer"/>
+              <div class="nome-preco">
+                <h3>Hambúrguer</h3>
+                <p>R$ 12,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">12</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto"/>
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto"/>
+            </button>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_misto.png" alt="Misto Quente"/>
+              <div class="nome-preco">
+                <h3>Misto Quente</h3>
+                <p>R$ 8,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">9</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+            </button>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_pf.png" alt="Prato Feito"/>
+              <div class="nome-preco">
+                <h3>Prato Feito</h3>
+                <p>R$ 18,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">15</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+            </button>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_coxinha.png" alt="Porção de Coxinhas"/>
+              <div class="nome-preco">
+                <h3>Coxinhas (Porção)</h3>
+                <p>R$ 10,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Porção com 4 coxinhas crocantes, recehadas com frango temperado.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">5</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+            </button>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <div class="modal-unidade" id="modalNovoProduto">
+      <div class="modal-conteudo-novo">
+        <form id="formCadastro">
+          <div class="campo-grupo">
+            <label>Imagem do Produto</label>
+            <div class="dropzone-imagem">
+              <p>Clique para adicionar a imagem</p>
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label>Nome do Produto</label>
+            <input type="text" name="nome" placeholder="Ex: Hambúrguer" required/>
+          </div>
+
+          <div class="linha-dupla">
+            <div class="campo-grupo">
+              <label>Preço</label>
+              <input type="text" name="preco" placeholder="R$ 0,00" required />
+            </div>
+            <div class="campo-grupo">
+              <label>Quantidade Inicial</label>
+              <input type="number" name="quantidade" placeholder="0" required />
+            </div>
+          </div>
+
+          <div class="linha-dupla">
+            <div class="campo-grupo">
+              <label>Descrição</label>
+              <textarea name="descricao" placeholder="Descreva o produto..." style="height: 80px; resize: none" required></textarea>
+            </div>
+            <div class="campo-grupo">
+              <label>Categoria</label>
+              <select name="categoria" required>
+                <option value="" disabled selected>Selecionar</option>
+                <option value="salgados">Salgados</option>
+                <option value="lanches">Lanches</option>
+                <option value="doces">Doces</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="pratos">Pratos</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="rodape-modal-botoes">
+            <button type="button" class="btn-cancelar-novo" id="btnFecharNovo">Cancelar</button>
+            <button type="submit" class="btn-cadastrar-novo" id="btnSalvar">SALVAR ALTERAÇÕES</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-unidade" id="modalExcluir">
+      <div class="modal-conteudo-pequeno">
+        <div class="excluir-texto-grupo">
+          <h3>Excluir Produto?</h3>
+          <p>Esta ação não pode ser desfeita.</p>
+        </div>
+        <div class="botoes-modal-pequeno">
+          <button type="button" class="btn-cancelar-modal"id="btnCancelarExcluir">CANCELAR</button>
+          <button type="button" class="btn-confirmar-excluir" id="btnConfirmarExcluir">EXCLUIR</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="produto.js"></script>
+  </body>
+</html>

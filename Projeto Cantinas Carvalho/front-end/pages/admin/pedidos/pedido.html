@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador - Pedidos</title>
+    <link rel="stylesheet" href="pedido.css" />
+    <link rel="icon" href="/front-end/assets/icons/logo.png" type="image/png" />
+  </head>
+
+  <body>
+    <header class="header-superior">
+      <div id="logo-container">
+        <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho"/>
+      </div>
+
+      <label class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <nav class="container-pages">
+      <div class="container-pages-links">
+        <a href="../produtos/produto.html" class="pages-links">Produtos</a>
+        <a href="#" class="pages-links-página-atual">Pedidos</a>
+        <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
+        <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
+      </div>
+    </nav>
+
+    <div class="linha-decorativa"></div>
+
+    <section class="sessao-controles">
+      <div class="search-bar">
+        <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+        <input type="text" placeholder="Pesquisar pedido..." />
+      </div>
+
+      <button class="container-button" id="btnFiltrarNovo">
+        <span class="btn-novo-texto">Todos</span>
+        <img src="/front-end/assets/icons/btn_adicionar_produto.png" alt=" Botão de Filtrar Pedido"/>
+      </button>
+    </section>
+
+    <main class="container-principal">
+      <div id="container-listagem" class="listagem-padrao">
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_hamburger.png" alt="Hambúrguer"/>
+              <div class="nome-preco">
+                <h3>Hambúrguer</h3>
+                <p>R$ 12,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">12</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto"/>
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto"/>
+            </button>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_misto.png" alt="Misto Quente"/>
+              <div class="nome-preco">
+                <h3>Misto Quente</h3>
+                <p>R$ 8,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">9</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+            </button>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_pf.png" alt="Prato Feito"/>
+              <div class="nome-preco">
+                <h3>Prato Feito</h3>
+                <p>R$ 18,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">15</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+            </button>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica">
+              <img src="/front-end/assets/images/img_produto_coxinha.png" alt="Porção de Coxinhas"/>
+              <div class="nome-preco">
+                <h3>Coxinhas (Porção)</h3>
+                <p>R$ 10,00</p>
+              </div>
+            </div>
+            <div class="divisor-vertical"></div>
+            <p class="descricao">Porção com 4 coxinhas crocantes, recehadas com frango temperado.</p>
+          </div>
+          <div class="controles-externos">
+            <div class="badge-unidade">5</div>
+            <button class="btn-circular btn-editar">
+              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+            </button>
+            <button class="btn-circular btn-lixeira">
+              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+            </button>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <script src="pedido.js"></script>
+  </body>
+</html>
