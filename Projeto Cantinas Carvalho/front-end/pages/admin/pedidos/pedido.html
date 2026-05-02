@@ -1,144 +1,218 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador - Pedidos</title>
-    <link rel="stylesheet" href="pedido.css" />
-    <link rel="icon" href="/front-end/assets/icons/logo.png" type="image/png" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador - Pedidos</title>
 
-  <body>
-    <header class="header-superior">
-      <div id="logo-container">
-        <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho"/>
-      </div>
+  <link rel="stylesheet" href="pedido.css" />
+  <link rel="icon" href="/front-end/assets/icons/logo.png" type="image/png" />
+</head>
 
-      <label class="theme-toggle">
-        <input type="checkbox" id="theme-switch" />
-        <span class="slider"></span>
-      </label>
-    </header>
+<body>
 
-    <nav class="container-pages">
-      <div class="container-pages-links">
-        <a href="../produtos/produto.html" class="pages-links">Produtos</a>
-        <a href="#" class="pages-links-página-atual">Pedidos</a>
-        <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
-        <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
-      </div>
-    </nav>
+  <header class="header-superior">
+    <div id="logo-container">
+      <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho" />
+    </div>
 
-    <div class="linha-decorativa"></div>
+    <label class="theme-toggle">
+      <input type="checkbox" id="theme-switch" />
+      <span class="slider"></span>
+    </label>
+  </header>
 
-    <section class="sessao-controles">
-      <div class="search-bar">
-        <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
-        <input type="text" placeholder="Pesquisar pedido..." />
-      </div>
+  <nav class="container-pages">
+    <div class="container-pages-links">
+      <a href="../produtos/produto.html" class="pages-links">Produtos</a>
+      <a href="#" class="pages-links-página-atual">Pedidos</a>
+      <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
+      <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
+    </div>
+  </nav>
 
-      <button class="container-button" id="btnFiltrarNovo">
-        <span class="btn-novo-texto">Todos</span>
-        <img src="/front-end/assets/icons/btn_adicionar_produto.png" alt=" Botão de Filtrar Pedido"/>
-      </button>
-    </section>
+  <div class="linha-decorativa"></div>
 
-    <main class="container-principal">
-      <div id="container-listagem" class="listagem-padrao">
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="/front-end/assets/images/img_produto_hamburger.png" alt="Hambúrguer"/>
-              <div class="nome-preco">
-                <h3>Hambúrguer</h3>
-                <p>R$ 12,00</p>
-              </div>
+  <section class="sessao-controles">
+
+    <div class="search-bar">
+      <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+      <input type="text" placeholder="Pesquisar pedido ou cliente..." />
+    </div>
+
+    <div class="custom-select-wrapper">
+      <select id="filtroGeral" class="select-personalizado">
+        <option value="todos">TODOS</option>
+        <option value="entregue">ENTREGUE</option>
+        <option value="pendente">PENDENTE</option>
+        <option value="preparo">EM PREPARO</option> 
+        <option value="cancelado">CANCELADO</option>
+      </select>
+      <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+    </div>
+
+  </section>
+
+  <main class="container-principal">
+    <div id="container-listagem" class="listagem-padrao">
+
+      <article class="item-lista">
+        <div class="card-produto-visual">
+          <div class="info-basica">
+            <div class="nome-preco">
+              <small><strong>Pedido:</strong> #1024</small>
+              <h3><strong>Nome:</strong> João Silva</h3>
+              <p><strong>Itens:</strong> Hambúrguer (2x), Coxinhas</p>
+              <span class="obs-pedido">⚠️ Sem cebola</span>
             </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
           </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">12</div>
-            <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto"/>
-            </button>
-            <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto"/>
-            </button>
-          </div>
-        </article>
 
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="/front-end/assets/images/img_produto_misto.png" alt="Misto Quente"/>
-              <div class="nome-preco">
-                <h3>Misto Quente</h3>
-                <p>R$ 8,00</p>
-              </div>
+          <div class="divisor-vertical"></div>
+
+          <div class="info-adicional-meio">
+            <p><strong>Pagamento:</strong> Pix</p>
+            <p><strong>Retirada:</strong> Balcão</p>
+          </div>
+
+          <div class="divisor-vertical"></div>
+
+          <div class="descricao">
+            <p><strong>Data:</strong> 30/03/2026 – 12:15</p>
+            <strong>Total: R$ 34,00</strong>
+          </div>
+        </div>
+
+        <div class="controles-externos">
+          <div class="custom-select-wrapper">
+            <select class="select-personalizado status-entregue">
+              <option value="entregue" selected>Entregue</option>
+              <option value="pendente">Pendente</option>
+              <option value="preparo">Em Preparo</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+          </div>
+        </div>
+      </article>
+
+      <article class="item-lista">
+        <div class="card-produto-visual">
+          <div class="info-basica">
+            <div class="nome-preco">
+              <small><strong>Pedido:</strong> #1025</small>
+              <h3><strong>Nome:</strong> Mariana Ribeiro</h3>
+              <p><strong>Itens:</strong> Misto Quente, Refrigerante</p>
             </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
           </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">9</div>
-            <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
-            </button>
-            <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
-            </button>
-          </div>
-        </article>
 
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="/front-end/assets/images/img_produto_pf.png" alt="Prato Feito"/>
-              <div class="nome-preco">
-                <h3>Prato Feito</h3>
-                <p>R$ 18,00</p>
-              </div>
+          <div class="divisor-vertical"></div>
+
+          <div class="info-adicional-meio">
+            <p><strong>Pagamento:</strong> Cartão de Crédito</p>
+            <p><strong>Retirada:</strong> Balcão</p>
+          </div>
+
+          <div class="divisor-vertical"></div>
+
+          <div class="descricao">
+            <p><strong>Data:</strong> 31/03/2026 – 12:32</p>
+            <strong>Total: R$ 13,00</strong>
+          </div>
+        </div>
+
+        <div class="controles-externos">
+          <div class="custom-select-wrapper">
+            <select class="select-personalizado status-pendente">
+              <option value="entregue">Entregue</option>
+              <option value="pendente" selected>Pendente</option>
+              <option value="preparo">Em Preparo</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+          </div>
+        </div>
+      </article>
+
+      <article class="item-lista">
+        <div class="card-produto-visual">
+          <div class="info-basica">
+            <div class="nome-preco">
+              <small><strong>Pedido:</strong> #1026</small>
+              <h3><strong>Nome:</strong> Mateus Santos</h3>
+              <p><strong>Itens:</strong> Hambúrguer, Suco</p>
             </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
           </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">15</div>
-            <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
-            </button>
-            <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
-            </button>
-          </div>
-        </article>
 
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="/front-end/assets/images/img_produto_coxinha.png" alt="Porção de Coxinhas"/>
-              <div class="nome-preco">
-                <h3>Coxinhas (Porção)</h3>
-                <p>R$ 10,00</p>
-              </div>
+          <div class="divisor-vertical"></div>
+
+          <div class="info-adicional-meio">
+            <p><strong>Pagamento:</strong> VR</p>
+            <p><strong>Retirada:</strong> Balcão</p>
+          </div>
+
+          <div class="divisor-vertical"></div>
+
+          <div class="descricao">
+            <p><strong>Data:</strong> 07/04/2026 – 13:05</p>
+            <strong>Total: R$ 22,00</strong>
+          </div>
+        </div>
+
+        <div class="controles-externos">
+          <div class="custom-select-wrapper">
+            <select class="select-personalizado status-preparo">
+              <option value="preparo" selected>Em Preparo</option>
+              <option value="pendente">Pendente</option>
+              <option value="entregue">Entregue</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+          </div>
+        </div>
+      </article>
+
+      <article class="item-lista">
+        <div class="card-produto-visual">
+          <div class="info-basica">
+            <div class="nome-preco">
+              <small><strong>Pedido:</strong> #1027</small>
+              <h3><strong>Nome:</strong> Juliana Rocha</h3>
+              <p><strong>Itens:</strong> Coxinhas, Misto</p>
             </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Porção com 4 coxinhas crocantes, recehadas com frango temperado.</p>
           </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">5</div>
-            <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
-            </button>
-            <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
-            </button>
-          </div>
-        </article>
-      </div>
-    </main>
 
-    <script src="pedido.js"></script>
-  </body>
+          <div class="divisor-vertical"></div>
+
+          <div class="info-adicional-meio">
+            <p><strong>Pagamento:</strong> VA</p>
+            <p><strong>Retirada:</strong> Balcão</p>
+          </div>
+
+          <div class="divisor-vertical"></div>
+
+          <div class="descricao">
+            <p><strong>Data:</strong> 12/04/2026 – 12:15</p>
+            <strong>Total: R$ 30,00</strong>
+          </div>
+        </div>
+
+        <div class="controles-externos">
+          <div class="custom-select-wrapper">
+            <select class="select-personalizado status-cancelado">
+              <option value="cancelado" selected>Cancelado</option>
+              <option value="pendente">Pendente</option>
+              <option value="preparo">Em Preparo</option>
+              <option value="entregue">Entregue</option>
+            </select>
+            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="pedido.js"></script>
+
+</body>
 </html>

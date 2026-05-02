@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administrador - Produtos</title>
     <link rel="stylesheet" href="produto.css" />
-    <link rel="icon" href="/front-end/assets/icons/logo.png" type="image/png" />
-
+    <link rel="icon" href="/front-end/assets/icons/logo.png" />
   </head>
 
   <body>
@@ -39,14 +38,14 @@
       </div>
 
       <button class="container-button" id="btnAbrirNovo">
-        <img src="/front-end/assets/icons/btn_adicionar_produto.png" alt=" Botão de Adicionar Produto"/>
+        <img src="/front-end/assets/icons/btn_adicionar_produto.png" alt="Botão Adicionar Produto"/>
         <span class="btn-novo-texto">Novo</span>
       </button>
     </section>
 
     <main class="container-principal">
       <div id="container-listagem" class="listagem-padrao">
-        <article class="item-lista">
+        <article class="item-lista" data-categoria="lanches">
           <div class="card-produto-visual">
             <div class="info-basica">
               <img src="/front-end/assets/images/img_produto_hamburger.png" alt="Hambúrguer"/>
@@ -55,44 +54,60 @@
                 <p>R$ 12,00</p>
               </div>
             </div>
+
             <div class="divisor-vertical"></div>
-            <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
+
+            <div class="bloco-direita">
+              <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
+              <span class="categoria-produto direita">Lanches</span>
+            </div>
           </div>
+
           <div class="controles-externos">
             <div class="badge-unidade">12</div>
+
             <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto"/>
+              <img src="/front-end/assets/icons/lapis.png" />
             </button>
+
             <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto"/>
+              <img src="/front-end/assets/icons/lixeira.png" />
             </button>
           </div>
         </article>
 
-        <article class="item-lista">
+        <article class="item-lista" data-categoria="lanches">
           <div class="card-produto-visual">
             <div class="info-basica">
-              <img src="/front-end/assets/images/img_produto_misto.png" alt="Misto Quente"/>
+              <img src="/front-end/assets/images/img_produto_misto.png" alt="Misto Quente" />
               <div class="nome-preco">
                 <h3>Misto Quente</h3>
                 <p>R$ 8,00</p>
               </div>
             </div>
+
             <div class="divisor-vertical"></div>
-            <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
+
+            <div class="bloco-direita">
+              <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
+              <span class="categoria-produto direita">Lanches</span>
+            </div>
           </div>
+
           <div class="controles-externos">
             <div class="badge-unidade">9</div>
+
             <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+              <img src="/front-end/assets/icons/lapis.png" />
             </button>
+
             <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+              <img src="/front-end/assets/icons/lixeira.png" />
             </button>
           </div>
         </article>
 
-        <article class="item-lista">
+        <article class="item-lista" data-categoria="pratos">
           <div class="card-produto-visual">
             <div class="info-basica">
               <img src="/front-end/assets/images/img_produto_pf.png" alt="Prato Feito"/>
@@ -101,39 +116,55 @@
                 <p>R$ 18,00</p>
               </div>
             </div>
+
             <div class="divisor-vertical"></div>
-            <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
+
+            <div class="bloco-direita">
+              <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
+              <span class="categoria-produto direita">Pratos</span>
+            </div>
           </div>
+
           <div class="controles-externos">
             <div class="badge-unidade">15</div>
+
             <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+              <img src="/front-end/assets/icons/lapis.png" />
             </button>
+
             <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+              <img src="/front-end/assets/icons/lixeira.png" />
             </button>
           </div>
         </article>
 
-        <article class="item-lista">
+        <article class="item-lista" data-categoria="salgados">
           <div class="card-produto-visual">
             <div class="info-basica">
-              <img src="/front-end/assets/images/img_produto_coxinha.png" alt="Porção de Coxinhas"/>
+              <img src="/front-end/assets/images/img_produto_coxinha.png" alt="Coxinhas" />
               <div class="nome-preco">
-                <h3>Coxinhas (Porção)</h3>
+                <h3>Coxinha</h3>
                 <p>R$ 10,00</p>
               </div>
             </div>
+
             <div class="divisor-vertical"></div>
-            <p class="descricao">Porção com 4 coxinhas crocantes, recehadas com frango temperado.</p>
+
+            <div class="bloco-direita">
+              <p class="descricao">Porção com 4 coxinhas crocantes, recehadas com frango temperado.</p>
+              <span class="categoria-produto direita">Salgados</span>
+            </div>
           </div>
+
           <div class="controles-externos">
             <div class="badge-unidade">5</div>
+
             <button class="btn-circular btn-editar">
-              <img src="/front-end/assets/icons/lapis.png" alt="Editar Produto" />
+              <img src="/front-end/assets/icons/lapis.png" />
             </button>
+
             <button class="btn-circular btn-lixeira">
-              <img src="/front-end/assets/icons/lixeira.png" alt="Excluir Produto" />
+              <img src="/front-end/assets/icons/lixeira.png" />
             </button>
           </div>
         </article>
@@ -152,29 +183,30 @@
 
           <div class="campo-grupo">
             <label>Nome do Produto</label>
-            <input type="text" name="nome" placeholder="Ex: Hambúrguer" required/>
+            <input type="text" name="nome" required />
           </div>
 
           <div class="linha-dupla">
             <div class="campo-grupo">
               <label>Preço</label>
-              <input type="text" name="preco" placeholder="R$ 0,00" required />
+              <input type="text" name="preco" required />
             </div>
+
             <div class="campo-grupo">
-              <label>Quantidade Inicial</label>
-              <input type="number" name="quantidade" placeholder="0" required />
+              <label>Quantidade</label>
+              <input type="number" name="quantidade" required />
             </div>
           </div>
 
           <div class="linha-dupla">
             <div class="campo-grupo">
               <label>Descrição</label>
-              <textarea name="descricao" placeholder="Descreva o produto..." style="height: 80px; resize: none" required></textarea>
+              <textarea name="descricao"></textarea>
             </div>
+
             <div class="campo-grupo">
               <label>Categoria</label>
               <select name="categoria" required>
-                <option value="" disabled selected>Selecionar</option>
                 <option value="salgados">Salgados</option>
                 <option value="lanches">Lanches</option>
                 <option value="doces">Doces</option>
@@ -184,8 +216,15 @@
             </div>
           </div>
 
+          <div class="campo-grupo">
+            <label class="checkbox-linha">
+              <input type="checkbox" name="disponivel" checked />
+              <span>Produto Disponível</span>
+            </label>
+          </div>
+
           <div class="rodape-modal-botoes">
-            <button type="button" class="btn-cancelar-novo" id="btnFecharNovo">Cancelar</button>
+            <button type="button" class="btn-cancelar-novo" id="btnFecharNovo">CANCELAR</button>
             <button type="submit" class="btn-cadastrar-novo" id="btnSalvar">SALVAR ALTERAÇÕES</button>
           </div>
         </form>
@@ -194,13 +233,12 @@
 
     <div class="modal-unidade" id="modalExcluir">
       <div class="modal-conteudo-pequeno">
-        <div class="excluir-texto-grupo">
-          <h3>Excluir Produto?</h3>
-          <p>Esta ação não pode ser desfeita.</p>
-        </div>
+        <h3>Excluir Produto?</h3>
+        <p>Essa ação não pode ser desfeita</p>
+
         <div class="botoes-modal-pequeno">
-          <button type="button" class="btn-cancelar-modal"id="btnCancelarExcluir">CANCELAR</button>
-          <button type="button" class="btn-confirmar-excluir" id="btnConfirmarExcluir">EXCLUIR</button>
+          <button id="btnConfirmarExcluir" class="btn-confirmar-excluir">Excluir </button>
+          <button id="btnCancelarExcluir" class="btn-cancelar-modal">Cancelar</button>
         </div>
       </div>
     </div>
