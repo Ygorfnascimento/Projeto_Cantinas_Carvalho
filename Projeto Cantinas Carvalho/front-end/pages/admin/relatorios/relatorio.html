@@ -1,39 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador - Relatórios</title>
+    <link rel="stylesheet" href="relatorio.css" />
+    <link rel="icon" href="/front-end/assets/icons/logo.png" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adm - Relatórios</title>
-    <link rel="stylesheet" href="relatorio.css"> 
-      <link rel="shortcut icon" href="/front-end/assets/logo.png" type="image/x-icon"><!-- CSS -->
-</head>
-
-<body>
+  <body>
     <header class="header-superior">
-        <div id="logo-container">
-            <img src="/front-end/assets/logo.png" id="logo" alt="Logo">
-        </div>
+      <div id="logo-container">
+        <img src="/front-end/assets/icons/logo.png" id="logo" />
+      </div>
 
-        <label class="theme-toggle">
-            <input type="checkbox" id="theme-switch">
-            <span class="slider"></span>
-        </label>
+      <label class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <span class="slider"></span>
+      </label>
     </header>
 
-    <!-- 2. NAVEGAÇÃO -->
     <nav class="container-pages">
-        <div class="container-pages-links">
-            <a href="../produtos/produto.html" class="pages-links" >Produtos</a>
-            <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
-            <a href="#" class="pages-links-página-atual">Relatórios</a>
-            <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
-        </div>
+      <div class="container-pages-links">
+        <a href="../produtos/produto.html" class="pages-links">Produtos</a>
+        <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
+        <a href="#" class="pages-links-página-atual">Relatórios</a>
+        <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
+      </div>
     </nav>
 
     <div class="linha-decorativa"></div>
 
-    <script src="relatorio.js"></script>
-</body>
+    <div class="linha-filtro">
+      <div class="custom-select-wrapper">
+        <select id="filtroGeral" class="select-personalizado">
+          <option value="ult_7-d">Últimos 7 dias</option>
+          <option value="ult_14-d">Últimos 14 dias</option>
+          <option value="ult_30-d">Últimos 30 dias</option>
+          <option value="todo-periodo">Todo o período</option>
+        </select>
+        <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+      </div>
+    </div>
 
+    <div class="container-relatorios">
+      <div class="card">
+        <h3>Produtos mais Vendidos</h3>
+        <div class="grafico-barras-manual">
+          <div class="item-barra">
+            <span class="label">1º Misto Quente</span>
+            <div class="barra-bg">
+              <div class="barra-fill" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="item-barra">
+            <span class="label">2º Prato Feito</span>
+            <div class="barra-bg">
+              <div class="barra-fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="item-barra">
+            <span class="label">3º Coxinhas</span>
+            <div class="barra-bg">
+              <div class="barra-fill" style="width: 45%"></div>
+            </div>
+          </div>
+          <div class="item-barra">
+            <span class="label">4º Hambúrguer</span>
+            <div class="barra-bg">
+              <div class="barra-fill" style="width: 20%"></div>
+            </div>
+          </div>
+
+          <div class="eixo-x-escala">
+            <div class="linha-eixo"></div>
+            <div class="labels-eixo">
+              <span>0</span>
+              <span class="label-meio-1"></span>
+              <span class="label-meio-2"></span>
+              <span class="label-meio-3"></span>
+              <span class="label-max"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Status dos Pedidos</h3>
+        <div class="grafico-rosca-container">
+          <div class="rosca-manual"></div>
+          <div class="legenda-rosca">
+            <p><span class="dot vermelho"></span> Cancelado (13)</p>
+            <p><span class="dot azul"></span> Em Preparo (5)</p>
+            <p><span class="dot verde"></span> Entregue (6)</p>
+            <p><span class="dot amarelo"></span> Pendente (8)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card valor-total">
+        <h3>Valores totais dos Pedidos</h3>
+        <div class="valor-total-info">
+          <p><span class="cifrao-verde">R$:</span> 3768,94</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="relatorio.js"></script>
+  </body>
 </html>

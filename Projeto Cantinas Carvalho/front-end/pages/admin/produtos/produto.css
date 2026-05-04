@@ -293,8 +293,8 @@
     border-color: #652a0e;
     background-color: rgba(101, 42, 14, 0.05);
     color: #652a0e;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
 .dropzone-imagem img {
@@ -486,13 +486,13 @@ body.dark-theme .modal-conteudo-novo select {
     color: #fff;
     letter-spacing: 0.04rem;
     text-transform: uppercase;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 0.125rem 0.375rem rgba(0,0,0,0.1);
 }
 
 body.dark-theme .categoria-produto {
     background: rgba(255, 255, 255, 0.1);
     color: #EFEBE4;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 0.0625rem solid rgba(255,255,255,0.2);
 }
 
 .item-lista.indisponivel .card-produto-visual {

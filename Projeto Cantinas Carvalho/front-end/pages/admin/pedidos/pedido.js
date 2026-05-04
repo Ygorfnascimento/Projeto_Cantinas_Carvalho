@@ -20,7 +20,6 @@ if (themeToggle) {
     });
 }
 
-// mensagem vazia
 const mensagemVazia = document.createElement('div');
 mensagemVazia.id = 'msg-vazio';
 mensagemVazia.innerHTML = `
@@ -29,6 +28,7 @@ mensagemVazia.innerHTML = `
         <p>Verifique os filtros ou tente outra busca</p>
     </div>
 `;
+
 mensagemVazia.style.display = 'none';
 containerListagem.appendChild(mensagemVazia);
 

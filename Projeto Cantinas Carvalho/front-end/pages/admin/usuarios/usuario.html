@@ -1,51 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador - Usuários</title>
+    <link rel="stylesheet" href="usuario.css" />
+    <link rel="icon" href="/front-end/assets/icons/logo.png" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adm - Usuários</title>
-    <link rel="stylesheet" href="usuario.css"> 
-    <link rel="shortcut icon" href="/front-end/assets/logo.png" type="image/x-icon"><!-- CSS -->
-</head>
-
-<body>
+  <body>
     <header class="header-superior">
-        <div id="logo-container">
-            <img src="/front-end/assets/logo.png" id="logo" alt="Logo">
-        </div>
+      <div id="logo-container">
+        <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho"/>
+      </div>
 
-        <label class="theme-toggle">
-            <input type="checkbox" id="theme-switch">
-            <span class="slider"></span>
-        </label>
+      <label class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <span class="slider"></span>
+      </label>
     </header>
-    
-   <nav class="container-pages">
-        <div class="container-pages-links">
-            <a href="../relatorios/relatorio.html" class="pages-links">Produtos</a>
-            <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
-            <a href="../relatorios/relatorio.html" class="pages-links" >Relatórios</a>
-            <a href="#" class="pages-links-página-atual">Usuários</a>
-        </div>
+
+    <nav class="container-pages">
+      <div class="container-pages-links">
+        <a href="../produtos/produto.html" class="pages-links">Produtos</a>
+        <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
+        <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
+        <a href="#" class="pages-links-página-atual">Usuários</a>
+      </div>
     </nav>
 
-    <hr class="linha-decorativa">
+    <div class="linha-decorativa"></div>
 
-    <div class="sessao-controles">
-        <div class="search-bar">
-            <img src="/front-end/assets/lupa.png" alt="Lupa de pesquisa">
-            <input type="text" placeholder="Pesquisar usuário...">
-        </div>
-    </div>
+    <section class="sessao-controles">
+      <div class="search-bar">
+        <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+        <input type="text" placeholder="Pesquisar usuario..." />
+      </div>
+    </section>
 
     <main class="container-principal">
-        <div id="container-listagem" class="listagem-padrao">
-        </div>
+      <div id="container-listagem" class="listagem-padrao">
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica"></div>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica"></div>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica"></div>
+          </div>
+        </article>
+
+        <article class="item-lista">
+          <div class="card-produto-visual">
+            <div class="info-basica"></div>
+          </div>
+        </article>
+      </div>
     </main>
-
-    <script src="/front-end/src/global.js"></script>
     <script src="usuario.js"></script>
-</body>
-
+  </body>
 </html>
