@@ -1,70 +1,162 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador - Usuários</title>
-    <link rel="stylesheet" href="usuario.css" />
-    <link rel="icon" href="/front-end/assets/icons/logo.png" />
-  </head>
 
-  <body>
-    <header class="header-superior">
-      <div id="logo-container">
-        <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador - Usuários</title>
+  <link rel="stylesheet" href="usuario.css" />
+  <link rel="icon" href="/front-end/assets/icons/logo.png" />
+</head>
+
+<body>
+  <header class="header-superior">
+    <div id="logo-container">
+      <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho" />
+    </div>
+
+    <label class="theme-toggle">
+      <input type="checkbox" id="theme-switch" />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <nav class="container-pages">
+    <div class="container-pages-links">
+      <a href="../produtos/produto.html" class="pages-links">Produtos</a>
+      <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
+      <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
+      <a href="#" class="pages-links-página-atual">Usuários</a>
+    </div>
+  </nav>
+
+  <div class="linha-decorativa"></div>
+
+  <section class="sessao-controles">
+    <div class="search-bar">
+      <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+      <input type="text" placeholder="Pesquisar usuario..." />
+    </div>
+
+    <aside class="container-stats">
+      <div class="card-stats">
+        <p>Ativos: <span class="numero-stats">17</span></p>
       </div>
-
-      <label class="theme-toggle">
-        <input type="checkbox" id="theme-switch" />
-        <span class="slider"></span>
-      </label>
-    </header>
-
-    <nav class="container-pages">
-      <div class="container-pages-links">
-        <a href="../produtos/produto.html" class="pages-links">Produtos</a>
-        <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
-        <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
-        <a href="#" class="pages-links-página-atual">Usuários</a>
+      <div class="card-stats">
+        <p>Inativos: <span class="numero-stats">23</span></p>
       </div>
-    </nav>
+    </aside>
+  </section>
 
-    <div class="linha-decorativa"></div>
-
-    <section class="sessao-controles">
-      <div class="search-bar">
-        <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
-        <input type="text" placeholder="Pesquisar usuario..." />
-      </div>
-    </section>
-
+  <div class="container-principal-wrapper">
     <main class="container-principal">
-      <div id="container-listagem" class="listagem-padrao">
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica"></div>
+      <div id="container-listagem">
+
+        <article class="dados card-ativo">
+          <div class="coluna col-nome">
+            <h3>Nome</h3>
+            <p class="txt-principal">João Gomes da Silva</p>
+            <p class="txt-secundario">joaogomesdasilva@email.com</p>
+          </div>
+          <div class="coluna col-perfil">
+            <h3>Perfil</h3>
+            <span class="badge-perfil">Aluno</span>
+          </div>
+          <div class="coluna col-status">
+            <h3>Status</h3>
+            <span class="badge-status ativo">Ativo</span>
+          </div>
+          <div class="coluna col-editar">
+            <h3>Editar</h3>
+            <div class="theme-edit">
+              <label class="status-toggle">
+                <input type="checkbox" checked />
+                <span class="status-slider"></span>
+              </label>
+            </div>
           </div>
         </article>
 
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica"></div>
+        <article class="dados card-inativo">
+          <div class="coluna col-nome">
+            <h3>Nome</h3>
+            <p class="txt-principal">Mariana Ribeiro da Costa</p>
+            <p class="txt-secundario">marianaribeiro@email.com</p>
+          </div>
+          <div class="coluna col-perfil">
+            <h3>Perfil</h3>
+            <span class="badge-perfil">Aluno</span>
+          </div>
+          <div class="coluna col-status">
+            <h3>Status</h3>
+            <span class="badge-status inativo">Inativo</span>
+          </div>
+          <div class="coluna col-editar">
+            <h3>Editar</h3>
+            <div class="theme-edit">
+              <label class="status-toggle">
+                <input type="checkbox" />
+                <span class="status-slider"></span>
+              </label>
+            </div>
           </div>
         </article>
 
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica"></div>
+        <article class="dados card-ativo">
+          <div class="coluna col-nome">
+            <h3>Nome</h3>
+            <p class="txt-principal">Matheus Santos de Oliveira</p>
+            <p class="txt-secundario">matheussantos@email.com</p>
+          </div>
+          <div class="coluna col-perfil">
+            <h3>Perfil</h3>
+            <span class="badge-perfil-func">Funcionário</span>
+          </div>
+          <div class="coluna col-status">
+            <h3>Status</h3>
+            <span class="badge-status ativo">Ativo</span>
+          </div>
+          <div class="coluna col-editar">
+            <h3>Editar</h3>
+            <div class="theme-edit">
+              <label class="status-toggle">
+                <input type="checkbox" checked />
+                <span class="status-slider"></span>
+              </label>
+            </div>
           </div>
         </article>
 
-        <article class="item-lista">
-          <div class="card-produto-visual">
-            <div class="info-basica"></div>
+        <article class="dados card-inativo">
+          <div class="coluna col-nome">
+            <h3>Nome</h3>
+            <p class="txt-principal">Juliana Rocha do Nascimento</p>
+            <p class="txt-secundario">julianarocha@email.com</p>
+          </div>
+          <div class="coluna col-perfil">
+            <h3>Perfil</h3>
+            <span class="badge-perfil-func">Funcionário</span>
+          </div>
+          <div class="coluna col-status">
+            <h3>Status</h3>
+            <span class="badge-status inativo">Inativo</span>
+          </div>
+          <div class="coluna col-editar">
+            <h3>Editar</h3>
+            <div class="theme-edit">
+              <label class="status-toggle">
+                <input type="checkbox" />
+                <span class="status-slider"></span>
+              </label>
+            </div>
           </div>
         </article>
+        
       </div>
     </main>
-    <script src="usuario.js"></script>
-  </body>
+  </div>
+
+  <script src="usuario.js"></script>
+</body>
+
 </html>
