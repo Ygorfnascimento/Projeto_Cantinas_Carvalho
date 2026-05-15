@@ -1,36 +1,12 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador - Relatórios</title>
-    <link rel="stylesheet" href="relatorio.css" />
-    <link rel="icon" href="/front-end/assets/icons/logo.png" />
-  </head>
+{% extends "base.html" %}
 
-  <body>
-    <header class="header-superior">
-      <div id="logo-container">
-        <img src="/front-end/assets/icons/logo.png" id="logo" />
-      </div>
+{% block title %}Administrador - Relatórios{% endblock %}
 
-      <label class="theme-toggle">
-        <input type="checkbox" id="theme-switch" />
-        <span class="slider"></span>
-      </label>
-    </header>
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio.css') }}" />
+{% endblock %}
 
-    <nav class="container-pages">
-      <div class="container-pages-links">
-        <a href="../produtos/produto.html" class="pages-links">Produtos</a>
-        <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
-        <a href="#" class="pages-links-página-atual">Relatórios</a>
-        <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
-      </div>
-    </nav>
-
-    <div class="linha-decorativa"></div>
-
+{% block content %}
     <div class="linha-filtro">
       <div class="custom-select-wrapper">
         <select id="filtroGeral" class="select-personalizado">
@@ -39,7 +15,7 @@
           <option value="ult_30-d">Últimos 30 dias</option>
           <option value="todo-periodo">Todo o período</option>
         </select>
-        <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+        <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
       </div>
     </div>
 
@@ -105,7 +81,8 @@
         </div>
       </div>
     </div>
+{% endblock %}
 
-    <script src="relatorio.js"></script>
-  </body>
-</html>
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/relatorio.js') }}"></script>
+{% endblock %}

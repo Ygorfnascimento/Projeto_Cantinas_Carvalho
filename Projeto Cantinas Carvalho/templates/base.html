@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantinas Carvalho - {% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/icons/logo.png') }}" />
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="header-superior">
+        <div id="logo-container">
+            <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" id="logo" alt="Logo Cantinas Carvalho"/>
+        </div>
+        <label class="theme-toggle">
+            <input type="checkbox" id="theme-switch" />
+            <span class="slider"></span>
+        </label>
+    </header>
+
+    <nav class="container-pages">
+        <div class="container-pages-links">
+            <a href="{{ url_for('produtos') }}" class="pages-links {% if request.endpoint == 'produtos' %}pages-links-página-atual{% endif %}">Produtos</a>
+            <a href="{{ url_for('pedidos') }}" class="pages-links {% if request.endpoint == 'pedidos' %}pages-links-página-atual{% endif %}">Pedidos</a>
+            <a href="{{ url_for('relatorios') }}" class="pages-links {% if request.endpoint == 'relatorios' %}pages-links-página-atual{% endif %}">Relatórios</a>
+            <a href="{{ url_for('usuarios') }}" class="pages-links {% if request.endpoint == 'usuarios' %}pages-links-página-atual{% endif %}">Usuários</a>
+        </div>
+    </nav>
+
+    <div class="linha-decorativa"></div>
+
+    {% block content %}{% endblock %}
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

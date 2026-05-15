@@ -59,12 +59,10 @@ dropzone?.addEventListener('click', () => inputFile.click());
 inputFile.addEventListener('change', () => {
     const file = inputFile.files[0];
     if (!file) return;
-
     if (file.size > 2 * 1024 * 1024) {
         alert('Imagem muito grande (máx: 2MB)');
         return;
     }
-
     const reader = new FileReader();
     reader.onload = (e) => {
         dropzone.innerHTML = `<img src="${e.target.result}" id="img-atual">`;
@@ -81,7 +79,6 @@ mensagemVazia.innerHTML = `
     </div>
 `;
 mensagemVazia.style.display = 'none';
-
 containerListagem?.appendChild(mensagemVazia);
 
 inputPesquisa?.addEventListener('input', () => {
@@ -90,10 +87,8 @@ inputPesquisa?.addEventListener('input', () => {
 
     itens.forEach(item => {
         if (item.id === 'mensagem-pesquisa-vazia') return;
-
         const nome = qs('h3', item)?.innerText.toLowerCase() || '';
         const match = nome.includes(termo);
-
         item.style.display = match ? 'flex' : 'none';
         if (match) encontrou = true;
     });
@@ -107,19 +102,16 @@ function vincularEventos(item) {
 
     btnEditar?.addEventListener('click', () => {
         itemSendoEditado = item;
-
         const lista = qsa('.item-lista', containerListagem);
         indiceOriginal = lista.indexOf(item);
 
         const campos = getCampos();
-
         const nome = qs('h3', item)?.innerText || '';
         const preco = qs('.nome-preco p', item)?.innerText.replace('R$ ', '') || '';
         const desc = qs('.descricao', item)?.innerText || '';
         const qtd = qs('.badge-unidade', item)?.innerText.replace(/\D/g, '') || '';
         const img = qs('img', item)?.src || '';
         const categoria = item.dataset.categoria || '';
-
         const indisponivel = item.classList.contains('indisponivel');
 
         campos.nome.value = nome;
@@ -127,7 +119,7 @@ function vincularEventos(item) {
         campos.quantidade.value = qtd;
         campos.descricao.value = desc;
         campos.categoria.value = categoria;
-        campos.disponivel.checked = !indisponivel;
+        campos.disponivel.checked = !indisponivel; // checkbox reflete status atual
 
         if (img) {
             dropzone.innerHTML = `<img src="${img}" id="img-atual">`;
@@ -159,10 +151,8 @@ btnCancelarExcluir?.addEventListener('click', () => {
 btnNovo?.addEventListener('click', () => {
     itemSendoEditado = null;
     indiceOriginal = null;
-
     formCadastro.reset();
     getCampos().disponivel.checked = true;
-
     dropzone.innerHTML = '<p>Clique para adicionar a imagem</p>';
     btnSubmit.innerText = 'CADASTRAR';
     modalNovo.style.display = 'flex';
@@ -181,7 +171,8 @@ formCadastro?.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const campos = getCampos();
-    const img = qs('#img-atual')?.src || '/front-end/assets/images/img_produto_hamburger.png';
+    const imgPadrao = '/static/assets/images/img_produto_hamburger.png';
+    const img = qs('#img-atual')?.src || imgPadrao;
 
     const indisponivel = !campos.disponivel.checked;
 
@@ -201,50 +192,33 @@ formCadastro?.addEventListener('submit', (e) => {
 
         <div class="area-extra">
             <span class="categoria-produto">${campos.categoria.value}</span>
-            ${indisponivel ? `<span class="status-indisponivel">Indisponível</span>` : ''}
+            <span class="status-indisponivel" style="display: ${indisponivel ? 'inline-block' : 'none'}">Indisponível</span>
         </div>
     </div>
 
     <div class="controles-externos">
         <div class="badge-unidade">${campos.quantidade.value}</div>
-        <button class="btn-circular btn-editar"><img src="/front-end/assets/icons/lapis.png"></button>
-        <button class="btn-circular btn-lixeira"><img src="/front-end/assets/icons/lixeira.png"></button>
+        <button class="btn-circular btn-editar" type="button">
+            <img src="/static/assets/icons/lapis.png">
+        </button>
+        <button class="btn-circular btn-lixeira" type="button">
+            <img src="/static/assets/icons/lixeira.png">
+        </button>
     </div>
     `;
 
     if (itemSendoEditado) {
-
         itemSendoEditado.innerHTML = html;
         itemSendoEditado.classList.toggle('indisponivel', indisponivel);
         itemSendoEditado.dataset.categoria = campos.categoria.value;
-
         vincularEventos(itemSendoEditado);
-
-        const lista = qsa('.item-lista', containerListagem);
-
-        if (indiceOriginal !== null) {
-            if (indiceOriginal >= lista.length) {
-                containerListagem.appendChild(itemSendoEditado);
-            } else {
-                containerListagem.insertBefore(
-                    itemSendoEditado,
-                    lista[indiceOriginal]
-                );
-            }
-        }
-
     } else {
-
         const novo = document.createElement('article');
         novo.className = 'item-lista';
-        novo.innerHTML = html;
-
         if (indisponivel) novo.classList.add('indisponivel');
-
         novo.dataset.categoria = campos.categoria.value;
-
+        novo.innerHTML = html;
         containerListagem.insertBefore(novo, containerListagem.firstChild);
-
         vincularEventos(novo);
     }
 

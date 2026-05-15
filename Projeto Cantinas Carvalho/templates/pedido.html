@@ -1,42 +1,16 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administrador - Pedidos</title>
+{% extends "base.html" %}
 
-  <link rel="stylesheet" href="pedido.css" />
-  <link rel="icon" href="/front-end/assets/icons/logo.png" type="image/png" />
-</head>
+{% block title %}Administrador - Pedidos{% endblock %}
 
-<body>
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pedido.css') }}" />
+{% endblock %}
 
-  <header class="header-superior">
-    <div id="logo-container">
-      <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho" />
-    </div>
-
-    <label class="theme-toggle">
-      <input type="checkbox" id="theme-switch" />
-      <span class="slider"></span>
-    </label>
-  </header>
-
-  <nav class="container-pages">
-    <div class="container-pages-links">
-      <a href="../produtos/produto.html" class="pages-links">Produtos</a>
-      <a href="#" class="pages-links-página-atual">Pedidos</a>
-      <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
-      <a href="../usuarios/usuario.html" class="pages-links">Usuários</a>
-    </div>
-  </nav>
-
-  <div class="linha-decorativa"></div>
-
-  <section class="sessao-controles">
+{% block content %}
+<section class="sessao-controles">
 
     <div class="search-bar">
-      <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+      <img src="{{ url_for('static', filename='assets/icons/lupa.png') }}" alt="Lupa de Pesquisa" />
       <input type="text" placeholder="Pesquisar pedido ou cliente..." />
     </div>
 
@@ -48,12 +22,12 @@
         <option value="preparo">EM PREPARO</option> 
         <option value="cancelado">CANCELADO</option>
       </select>
-      <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+      <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
     </div>
 
-  </section>
+</section>
 
-  <main class="container-principal">
+<main class="container-principal">
     <div id="container-listagem" class="listagem-padrao">
 
       <article class="item-lista">
@@ -90,7 +64,7 @@
               <option value="preparo">Em Preparo</option>
               <option value="cancelado">Cancelado</option>
             </select>
-            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
           </div>
         </div>
       </article>
@@ -128,7 +102,7 @@
               <option value="preparo">Em Preparo</option>
               <option value="cancelado">Cancelado</option>
             </select>
-            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
           </div>
         </div>
       </article>
@@ -166,7 +140,7 @@
               <option value="entregue">Entregue</option>
               <option value="cancelado">Cancelado</option>
             </select>
-            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
           </div>
         </div>
       </article>
@@ -177,7 +151,7 @@
             <div class="nome-preco">
               <small><strong>Pedido:</strong> #1027</small>
               <h3><strong>Nome:</strong> Juliana Rocha</h3>
-              <p><strong>Itens:</strong> Hambúrger (1x),  Misto Quente (1x), Coxinha (1x)</p>
+              <p><strong>Itens:</strong> Hambúrger (1x), Misto Quente (1x), Coxinha (1x)</p>
             </div>
           </div>
 
@@ -204,15 +178,15 @@
               <option value="preparo">Em Preparo</option>
               <option value="entregue">Entregue</option>
             </select>
-            <img src="/front-end/assets/icons/seta_baixo.png" class="seta-icone" />
+            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
           </div>
         </div>
       </article>
 
     </div>
-  </main>
+</main>
+{% endblock %}
 
-  <script src="pedido.js"></script>
-
-</body>
-</html>
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/pedido.js') }}"></script>
+{% endblock %}

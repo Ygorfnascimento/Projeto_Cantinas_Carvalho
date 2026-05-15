@@ -1,40 +1,15 @@
-<!doctype html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administrador - Usuários</title>
-  <link rel="stylesheet" href="usuario.css" />
-  <link rel="icon" href="/front-end/assets/icons/logo.png" />
-</head>
+{% block title %}Administrador - Usuários{% endblock %}
 
-<body>
-  <header class="header-superior">
-    <div id="logo-container">
-      <img src="/front-end/assets/icons/logo.png" id="logo" alt="Logo Cantinas Carvalho" />
-    </div>
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/usuario.css') }}" />
+{% endblock %}
 
-    <label class="theme-toggle">
-      <input type="checkbox" id="theme-switch" />
-      <span class="slider"></span>
-    </label>
-  </header>
-
-  <nav class="container-pages">
-    <div class="container-pages-links">
-      <a href="../produtos/produto.html" class="pages-links">Produtos</a>
-      <a href="../pedidos/pedido.html" class="pages-links">Pedidos</a>
-      <a href="../relatorios/relatorio.html" class="pages-links">Relatórios</a>
-      <a href="#" class="pages-links-página-atual">Usuários</a>
-    </div>
-  </nav>
-
-  <div class="linha-decorativa"></div>
-
+{% block content %}
   <section class="sessao-controles">
     <div class="search-bar">
-      <img src="/front-end/assets/icons/lupa.png" alt="Lupa de Pesquisa" />
+      <img src="{{ url_for('static', filename='assets/icons/lupa.png') }}" alt="Lupa de Pesquisa" />
       <input type="text" placeholder="Pesquisar usuario..." />
     </div>
 
@@ -155,8 +130,8 @@
       </div>
     </main>
   </div>
+{% endblock %}
 
-  <script src="usuario.js"></script>
-</body>
-
-</html>
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/usuario.js') }}"></script>
+{% endblock %}
