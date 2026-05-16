@@ -328,13 +328,81 @@ body.dark-theme .select-personalizado:focus {
 }
 
 @media (max-width: 1024px) {
+    :root {
+        --margem-lateral: 2rem; 
+    }
+
     .container-relatorios {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.5rem; 
     }
 }
 
 @media (max-width: 768px) {
+    :root {
+        --margem-lateral: 1.5rem;
+    }
+
+    .linha-filtro {
+        justify-content: center; 
+        margin-top: 1rem;
+    }
+
+    .select-personalizado {
+        width: 100%; 
+        max-width: 20rem;
+        font-size: 0.95rem;
+    }
+
     .container-relatorios {
         grid-template-columns: 1fr;
+        margin: 1rem auto 2rem;
+    }
+
+    .card {
+        height: auto; 
+        min-height: 20rem;
+        padding: 1.5rem 1.2rem;
+    }
+
+    .valor-total p {
+        font-size: 2.2rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --margem-lateral: 1rem; 
+    }
+
+    .card h3 {
+        font-size: 1rem; 
+    }
+
+    .item-barra {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .item-barra .label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .eixo-x-escala {
+        padding-left: 0; 
+    }
+
+    .legenda-rosca {
+        gap: 0.6rem;
+    }
+
+    .legenda-rosca p {
+        font-size: 0.75rem;
+    }
+
+    .valor-total p {
+        font-size: 1.8rem;
     }
 }

@@ -8,6 +8,11 @@ body {
     padding-top: 1rem;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .container-button {
     display: flex;
     align-items: center;
@@ -64,6 +69,7 @@ body {
     border: 0.0938rem solid var(--cor-navegacao);
     border-radius: 0.6rem;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .btn-circular img {
@@ -111,7 +117,7 @@ body {
     align-items: center;
     gap: 1.5rem;
     flex: 1;
-    min-width: 30rem;
+    min-width: 0; 
     padding: 0.7rem 1.4rem;
     background-color: var(--cor-barra-pesquisa);
     border: 0.0625rem solid transparent;
@@ -131,6 +137,7 @@ body {
     align-items: center;
     gap: 1.2rem;
     min-width: 14rem;
+    flex-shrink: 0;
 }
 
 .info-basica img {
@@ -179,13 +186,16 @@ body {
     font-style: italic;
     line-height: 1.4;
     opacity: 0.8;
+    min-width: 8rem;
+    word-wrap: break-word;
 }
 
 .controles-externos {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    flex-shrink: 0;
+    flex-shrink: 0;    
+    margin-left: auto; 
 }
 
 .badge-unidade {
@@ -193,12 +203,13 @@ body {
     min-width: 9rem;
     padding: 0.6rem 1.2rem;
     background: var(--cor-fundo);
-    border: 0.0625rem solid #652a0e;
+    border: 0.0938rem solid #652a0e; 
     border-radius: 2rem;
     text-align: center;
     font-weight: 800;
     color: #652a0e;
-    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.05);
+    box-shadow: none; 
+    flex-shrink: 0;
 }
 
 .badge-unidade::after {
@@ -209,21 +220,53 @@ body {
     opacity: 0.9;
 }
 
-.status-indisponivel,
 .categoria-produto {
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.8rem;
+    background: linear-gradient(135deg, #652a0e, #8a3c16);
+    border-radius: 2rem;
+    font-size: 0.65rem;
+    box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.1);
     display: inline-block;
     color: #fff;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04rem;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .status-indisponivel {
+    display: inline-block;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04rem;
     margin-top: 0.3rem;
     padding: 0.2rem 0.7rem;
     background: #a82a2a;
     border-radius: 1rem;
     font-size: 0.65rem;
+}
+
+.item-lista.indisponivel .card-produto-visual {
+    position: relative;
+    opacity: 0.55;
+    filter: grayscale(70%);
+}
+
+.item-lista.indisponivel .card-produto-visual:hover {
+    transform: none;
+    box-shadow: var(--sombra-padrao);
+}
+
+.item-lista.indisponivel h3 {
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.item-lista.indisponivel .info-basica img {
+    filter: grayscale(100%) brightness(0.8);
 }
 
 .select-personalizado {
@@ -248,6 +291,74 @@ body {
 .select-personalizado:focus {
     border-color: #F0ECE1;
     box-shadow: 0 0 5px rgba(240,236,225,0.3);
+}
+
+.checkbox-ajustado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.checkbox-linha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    width: auto;
+    flex-wrap: nowrap;
+    margin-top: 0.3rem;
+}
+
+.checkbox-linha input[type="checkbox"] {
+    position: relative;
+    width: 1.2rem;
+    height: 1.2rem;
+    min-width: 1.2rem;
+    min-height: 1.2rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--cor-fundo);
+    border: 0.125rem solid var(--cor-navegacao);
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.checkbox-linha input[type="checkbox"]:hover,
+.checkbox-linha input[type="checkbox"]:focus {
+    background-color: var(--cor-fundo);
+    box-shadow: none;
+    outline: none;
+    filter: none;
+}
+
+.checkbox-linha input[type="checkbox"]:checked::before {
+    content: "✓";
+    color: var(--cor-navegacao);
+    font-size: 0.95rem;
+    font-weight: 900;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-linha span {
+    display: inline;
+    width: auto !important;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #652a0e;
+    white-space: nowrap;
 }
 
 .modal-unidade {
@@ -280,6 +391,7 @@ body {
     border-radius: 2rem;
     box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.1);
     font-family: inherit;
+    box-sizing: border-box;
 }
 
 .modal-conteudo-novo label {
@@ -558,103 +670,6 @@ body.dark-theme .modal-conteudo-novo textarea::-webkit-scrollbar {
     text-decoration: underline;
 }
 
-.categoria-produto {
-    margin: 0.25rem 0;
-    padding: 0.25rem 0.8rem;
-    background: linear-gradient(135deg, #652a0e, #8a3c16);
-    border-radius: 2rem;
-    font-size: 0.65rem;
-    box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.1);
-}
-
-.item-lista.indisponivel .card-produto-visual {
-    position: relative;
-    opacity: 0.55;
-    filter: grayscale(70%);
-}
-
-.item-lista.indisponivel .card-produto-visual:hover {
-    transform: none;
-    box-shadow: var(--sombra-padrao);
-}
-
-.item-lista.indisponivel h3 {
-    text-decoration: line-through;
-    opacity: 0.8;
-}
-
-.item-lista.indisponivel .info-basica img {
-    filter: grayscale(100%) brightness(0.8);
-}
-
-.checkbox-ajustado {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.checkbox-linha {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.6rem;
-    width: auto;
-    flex-wrap: nowrap;
-    margin-top: 0.3rem;
-}
-
-.checkbox-linha input[type="checkbox"] {
-    position: relative;
-    width: 1.2rem;
-    height: 1.2rem;
-    min-width: 1.2rem;
-    min-height: 1.2rem;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: var(--cor-fundo);
-    border: 0.125rem solid var(--cor-navegacao);
-    border-radius: 0.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: visible;
-}
-
-.checkbox-linha input[type="checkbox"]:hover,
-.checkbox-linha input[type="checkbox"]:focus {
-    background-color: var(--cor-fundo);
-    box-shadow: none;
-    outline: none;
-    filter: none;
-}
-
-.checkbox-linha input[type="checkbox"]:checked::before {
-    content: "✓";
-    color: var(--cor-navegacao);
-    font-size: 0.95rem;
-    font-weight: 900;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.checkbox-linha span {
-    display: inline;
-    width: auto !important;
-    margin: 0;
-    padding: 0;
-    font-size: 0.85rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #652a0e;
-    white-space: nowrap;
-}
-
 body.dark-theme .modal-conteudo-novo {
     background-color: #2D1B15;
     border-color: #3D261E;
@@ -721,4 +736,130 @@ body.dark-theme .modal-conteudo-novo textarea::-webkit-scrollbar-thumb {
 
 body.dark-theme .modal-conteudo-novo textarea::-webkit-scrollbar-thumb:hover {
     background-color: #5A382C;
+}
+
+body.dark-theme .badge-unidade {
+    border: 0.0938rem solid #44322A !important; 
+    color: #EFEBE4;
+    box-shadow: none; 
+}
+
+@media (max-width: 1100px) {
+    .card-produto-visual {
+        gap: 1rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .info-basica {
+        min-width: 12rem; 
+    }
+
+    .badge-unidade {
+        min-width: 7.5rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .categoria-produto {
+        font-size: 0.6rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
+
+@media (max-width: 880px) {
+    .item-lista {
+        flex-direction: column; 
+        align-items: stretch;
+        gap: 0.8rem;
+        padding: 1.2rem 0;
+    }
+
+    .card-produto-visual {
+        width: 100%;
+    }
+
+    .controles-externos {
+        width: 100%;
+        justify-content: flex-end; 
+        margin-left: 0;
+        margin-top: 0.2rem;
+    }
+
+    .badge-unidade {
+        flex: 1;
+        max-width: 11rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .card-produto-visual {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .info-basica {
+        width: 100%;
+    }
+
+    .divisor-vertical {
+        width: 100%;
+        height: 1px; 
+        margin: 0.2rem 0;
+    }
+
+    .descricao {
+        padding: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-principal {
+        padding: 0.8rem;
+    }
+
+    .container-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .info-basica img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .nome-preco h3 {
+        font-size: 0.95rem;
+    }
+
+    .rodape-modal-botoes {
+        flex-direction: column-reverse;
+        gap: 0.6rem;
+    }
+
+    .btn-cancelar-novo,
+    .btn-cadastrar-novo {
+        width: 100%;
+    }
+
+    .modal-conteudo-novo {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto; 
+    }
+
+    .linha-dupla {
+        grid-template-columns: 1fr; 
+    }
+
+    .modal-conteudo-pequeno {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .badge-unidade::after {
+        display: block;
+        font-size: 0.65rem;
+        margin-top: 0.1rem;
+    }
 }

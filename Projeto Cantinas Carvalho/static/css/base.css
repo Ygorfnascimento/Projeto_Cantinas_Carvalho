@@ -41,6 +41,16 @@ body {
     max-width: var(--largura-max-conteudo);
 }
 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--cor-navegacao);
+    cursor: pointer;
+    margin: 1rem var(--margem-lateral);
+}
+
 #logo {
     width: 7.5rem;
     cursor: pointer;
@@ -52,8 +62,9 @@ body {
 }
 
 .linha-decorativa {
-    width: 32.7rem;
-    max-width: 80%;
+    display: block;
+    width: 32.7rem !important; 
+    max-width: calc(100% - (var(--margem-lateral) * 2));
     height: 0.15rem;
     margin: 1rem var(--margem-lateral);
     background-color: var(--cor-navegacao);
@@ -63,7 +74,9 @@ body {
 .container-pages {
     display: flex;
     align-items: center;
-    width: fit-content;
+    width: fit-content !important; 
+    width: -moz-fit-content !important;
+    flex-grow: 0 !important;
     max-width: calc(100% - (var(--margem-lateral) * 2));
     min-height: var(--altura-controles);
     margin: 1.5rem var(--margem-lateral) 0;
@@ -450,4 +463,200 @@ body.dark-theme svg {
 
 body.dark-theme * {
     border-color: rgba(240,236,225,0.2) !important;
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --margem-lateral: 2.5rem;
+    }
+
+    .card-produto-visual { 
+        gap: 1.2rem; 
+        padding: 0.7rem 1.2rem; 
+    }
+
+    .info-basica {
+        min-width: 13rem;
+    }
+    .descricao { 
+        min-width: 10rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root { 
+        --margem-lateral: 2rem; 
+    }
+
+    .item-lista { 
+        gap: 1rem; 
+    }
+
+    .card-produto-visual { 
+        flex-wrap: wrap; 
+        gap: 1rem; 
+    }
+
+    .descricao { 
+        flex-basis: 100%; 
+        order: 3; 
+        padding: 0.5rem 0 0; 
+    }
+
+    .divisor-vertical { 
+        display: none; 
+    }
+}
+
+@media (max-width: 850px) {
+    :root { 
+        --margem-lateral: 1.5rem; 
+    }
+
+    .header-superior { 
+        margin: 1.2rem var(--margem-lateral) 0; 
+    }
+
+    #logo { 
+        width: 6.5rem; 
+    }
+
+    .container-pages {
+        width: calc(100% - (var(--margem-lateral) * 2)) !important;
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+
+    .container-pages::-webkit-scrollbar { 
+        display: none; 
+    }
+
+    .linha-decorativa {
+        width: calc(100% - (var(--margem-lateral) * 2)) !important;
+        margin: 0.8rem var(--margem-lateral);
+    }
+
+    .sessao-controles { 
+        margin: 1.2rem var(--margem-lateral); 
+        gap: 0.8rem; 
+    }
+
+    .search-bar { 
+        padding: 0 0.8rem; 
+    }
+
+    .search-bar input { 
+        font-size: 0.85rem; 
+    }
+
+    .container-button { 
+        padding: 0 1.2rem; 
+        font-size: 0.85rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    .item-lista { 
+        flex-direction: column; 
+        align-items: stretch; 
+        gap: 0.6rem; 
+        padding: 1rem 0; 
+    }
+
+    .controles-externos { 
+        width: 100%; 
+        justify-content: flex-end; 
+        margin-left: 0; 
+        gap: 0.6rem; 
+    }
+
+    .badge-unidade { 
+        flex: 1; 
+        max-width: 10rem; 
+        min-width: auto; 
+    }
+}
+
+@media (max-width: 580px) {
+    :root {
+        --margem-lateral: 1rem;
+        --altura-controles: 2.8rem;
+    }
+
+    .header-superior { 
+        margin-top: 1rem; 
+    }
+
+    #logo { 
+        width: 5.5rem; 
+    }
+
+    .container-pages { 
+        padding: 0 0.25rem; 
+    }
+    
+    .linha-decorativa {
+        width: calc(100% - (var(--margem-lateral) * 2)) !important;
+        margin: 0.6rem var(--margem-lateral);
+    }
+
+    .sessao-controles { 
+        margin: 1rem var(--margem-lateral); 
+    }
+
+    .search-bar { 
+        flex: 2.5; 
+    }
+
+    .container-button { 
+        flex: 1; 
+        padding: 0 0.5rem; 
+    }
+
+    .container-button span, .btn-novo-texto { 
+        font-size: 0.75rem; 
+    }
+
+    .card-produto-visual { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 0.6rem; 
+        padding: 1rem; 
+    }
+
+    .info-basica { 
+        width: 100%; 
+        min-width: auto;
+    }
+
+    .descricao { 
+        padding: 0; 
+    }
+
+    .container-principal { 
+        height: 52vh; 
+        margin: 0 var(--margem-lateral) 1.5rem; 
+        padding: 0.8rem; 
+        border-radius: 0.6rem; 
+    }
+
+    .linha-dupla { 
+        grid-template-columns: 1fr; 
+    }
+
+    .rodape-modal-botoes { 
+        flex-direction: column-reverse;
+        gap: 0.5rem; 
+    }
+
+    .btn-cancelar-novo, .btn-cadastrar-novo { 
+        max-width: 100%; 
+        width: 100%; 
+    }
+
+    .modal-conteudo-novo { 
+        padding: 1.2rem 1rem; 
+    }
 }
