@@ -19,18 +19,32 @@
     </header>
 
     <nav class="container-pages">
-        <div class="container-pages-links">
-            <a href="{{ url_for('produtos') }}" class="pages-links {% if request.endpoint == 'produtos' %}pages-links-página-atual{% endif %}">Produtos</a>
-            <a href="{{ url_for('pedidos') }}" class="pages-links {% if request.endpoint == 'pedidos' %}pages-links-página-atual{% endif %}">Pedidos</a>
-            <a href="{{ url_for('relatorios') }}" class="pages-links {% if request.endpoint == 'relatorios' %}pages-links-página-atual{% endif %}">Relatórios</a>
-            <a href="{{ url_for('usuarios') }}" class="pages-links {% if request.endpoint == 'usuarios' %}pages-links-página-atual{% endif %}">Usuários</a>
+        <div class="container-pages-links" id="nav-links">
+            <a href="{{ url_for('produtos') }}" class="pages-links">Produtos</a>
+            <a href="{{ url_for('pedidos') }}" class="pages-links">Pedidos</a>
+            <a href="{{ url_for('relatorios') }}" class="pages-links">Relatórios</a>
+            <a href="{{ url_for('usuarios') }}" class="pages-links">Usuários</a>
         </div>
+
+        <button class="hamburger" id="menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <div class="linha-decorativa"></div>
 
-    {% block content %}{% endblock %}
+    {% block content %}{% endblock %} {% block scripts %} {% endblock %}
 
-    {% block scripts %}{% endblock %}
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menuLinks = document.querySelector('.container-pages-links');
+
+        hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        menuLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
