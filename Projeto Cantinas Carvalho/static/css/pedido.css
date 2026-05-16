@@ -21,6 +21,7 @@
     display: inline-flex;
     align-items: center;
     height: 2.8rem;
+    user-select: none;
 }
 
 .sessao-controles .custom-select-wrapper {
@@ -31,46 +32,77 @@
     width: 10.5rem;
 }
 
-.select-personalizado,
-#filtroGeral {
+.custom-select {
     width: 100%;
     height: 100%;
-    padding: 0 2.5rem 0 1.2rem;
-    appearance: none;
-    -webkit-appearance: none;
-    border: .09375rem solid rgba(255,255,255,.2);
     border-radius: .6rem;
     cursor: pointer;
     font: 700 .85rem;
     text-transform: uppercase;
+    position: relative;
+    border: .09375rem solid rgba(255,255,255,.2);
+    transition: all 0.3s ease;
 }
 
 #filtroGeral,
-.select-personalizado:not([class*="status-"]) {
-    background: var(--cor-da-aba-de-navegacao-modo-claro);
+.custom-select:not([class*="status-"]) {
+    background: var(--cor-navegacao);
     color: #fff;
 }
 
-.custom-select-wrapper .seta-icone {
-    position: absolute;
-    top: 50%;
-    right: .8rem;
-    width: .7rem;
-    pointer-events: none;
-    transform: translateY(-50%);
-    transition: .4s;
+.custom-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 1.2rem;
 }
 
-.custom-select-wrapper:hover .seta-icone {
-    transform: translateY(-50%) rotate(180deg);
+.seta-icone {
+    width: .7rem;
+    transition: .4s;
 }
 
 .sessao-controles .seta-icone {
     filter: brightness(0) invert(1);
 }
 
-.controles-externos .seta-icone {
-    filter: invert(18%) sepia(55%) saturate(848%) hue-rotate(338deg);
+.custom-select.open .seta-icone {
+    transform: rotate(180deg);
+}
+
+.custom-options {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    background: #F4F1EA; 
+    border: 0.09375rem solid rgba(101, 42, 14, 0.2);
+    border-radius: 0.6rem;
+    display: none;
+    z-index: 999;
+    overflow: hidden;
+    box-shadow: var(--sombra-elevada);
+}
+
+.custom-select.open .custom-options {
+    display: block;
+}
+
+.custom-option {
+    padding: 0.8rem 1.2rem;
+    color: #652a0e; 
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    background: transparent; 
+}
+
+.custom-option:hover {
+    background-color: #652a0e;
+    color: #ffffff;
 }
 
 .card-produto-visual {
@@ -80,7 +112,7 @@
     flex: 1;
     min-height: 7rem;
     padding: 0 1.5rem;
-    background: var(--cor-de-fundo-modo-claro);
+    background: var(--cor-fundo);
     border: .0625rem solid transparent;
     border-radius: .8rem;
     box-shadow: var(--sombra-padrao);
@@ -103,12 +135,14 @@
 .info-adicional-meio {
     flex: 1.5;
     font-size: .85rem;
+    color: #652a0e;
 }
 
 .descricao {
     flex: 1.2;
     font-size: .85rem;
     text-align: right;
+    color: #652a0e;
 }
 
 .divisor-vertical {
@@ -119,21 +153,18 @@
     flex-shrink: 0;
 }
 
-.select-personalizado[class*="status-"] {
-    background-image: none !important;
-}
-
-.select-personalizado:focus {
-    outline: none;
-    border-color: .09375rem solid rgba(255,255,255,.2);
+.obs-pedido {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #d4a017;
 }
 
 .status-entregue,
 .status-pendente,
 .status-preparo,
 .status-cancelado {
-    background: inherit;
-    border: .125rem solid rgba(0, 0, 0, 0.2);
+    border-color: #652a0e;
+    color: #652a0e;
 }
 
 body.dark-theme {
@@ -149,33 +180,29 @@ body.dark-theme .divisor-vertical {
     background: rgba(255,255,255,.12);
 }
 
-body.dark-theme .card-produto-visual strong,
-body.dark-theme .info-adicional-meio b,
-body.dark-theme .info-basica strong {
-    color: rgba(241,237,224,.55);
-}
-
 body.dark-theme .nome-preco h3,
 body.dark-theme .nome-preco p,
 body.dark-theme .info-adicional-meio,
 body.dark-theme .descricao,
-body.dark-theme .obs-pedido {
+body.dark-theme .info-adicional-meio strong,
+body.dark-theme .descricao strong {
     color: #f1ede0;
 }
 
-body.dark-theme .info-basica small {
-    color: #d4a017;
+body.dark-theme .custom-options {
+    background: #1a110e; 
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .custom-option {
+    color: #f1ede0;
+}
+
+body.dark-theme .custom-option:hover {
+    background-color: #652a0e;
+    color: #ffffff;
 }
 
 body.dark-theme .seta-icone {
-    color: #fff !important;
-    fill: #fff !important;
-    opacity: 1 !important;
     filter: brightness(0) invert(1) !important;
-}
-
-body.dark-theme .select-personalizado:focus {
-    outline: none;
-    border-color: #F0ECE1;
-    box-shadow: 0 0 5px rgba(240, 236, 225, 0.3);
 }

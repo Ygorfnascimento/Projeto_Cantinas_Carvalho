@@ -3,10 +3,7 @@
 :root {
     --curva-suave: cubic-bezier(0.4, 0, 0.2, 1);
     --sombra-premium: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.3);
-    --cor-grafico-1: #57260f;
-    --cor-grafico-2: #8b4513;
-    --cor-grafico-3: #d4af37;
-    --cor-grafico-4: #e6d5b8;
+    --cor-grafico-1: #8b4513;
 }
 
 .linha-filtro {
@@ -15,7 +12,7 @@
     align-items: center;
     gap: 1.5rem;
     width: 100%;
-    max-width: var(--largura-maxima-conteudo);
+    max-width: var(--largura-max-conteudo);
     margin: 1.5rem auto 0;
     padding: 0 var(--margem-lateral);
     box-sizing: border-box;
@@ -30,10 +27,10 @@
 .select-personalizado {
     height: var(--altura-controles);
     padding: 0 2.5rem 0 1.2rem; 
-    background-color: var(--cor-da-aba-de-navegacao-modo-claro);
+    background-color: var(--cor-navegacao);
     color: #f0ece1;
     border: 0.0625rem solid transparent;
-    border-radius: var(--radius-padrao);
+    border-radius: var(--border-radius);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -76,7 +73,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: var(--largura-maxima-conteudo);
+    max-width: var(--largura-max-conteudo);
     margin: 1.5rem auto 3rem;
     padding: 0 var(--margem-lateral);
     box-sizing: border-box;
@@ -102,7 +99,7 @@
     width: 100%;
     height: 22rem;
     padding: 2rem 1.5rem;
-    background-color: var(--cor-da-barra-de-pesquisa-modo-claro);
+    background-color: var(--cor-barra-pesquisa);
     border: 0.0625rem solid rgba(240, 236, 225, 0.15);
     border-radius: 0.75rem;
     box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.4);
@@ -151,7 +148,7 @@
     width: 6.5rem;
     font-size: 0.8rem;
     text-align: left;
-    color: var(--cor-da-aba-de-navegacao-modo-claro);
+    color: var(--cor-navegacao);
 }
 
 .barra-bg {
@@ -166,7 +163,7 @@
 .barra-fill {
     position: relative;
     height: 100%;
-    background-color: var(--cor-grafico-2);
+    background-color: var(--cor-grafico-1);
     border-radius: 0.25rem;
     overflow: hidden;
     transition: width 0.8s var(--curva-suave);
@@ -216,7 +213,7 @@
     justify-content: space-between;
     margin-top: 0.3125rem;
     font-size: 0.7rem;
-    color: var(--cor-da-aba-de-navegacao-modo-claro);
+    color: var(--cor-navegacao);
 }
 
 .grafico-rosca-container {
@@ -248,7 +245,7 @@
     position: absolute;
     width: 4.6875rem;
     height: 4.6875rem;
-    background: var(--cor-da-barra-de-pesquisa-modo-claro);
+    background: var(--cor-barra-pesquisa);
     border-radius: 50%;
     transition: background 0.3s ease;
 }
@@ -267,7 +264,7 @@
     align-items: center;
     white-space: nowrap;
     font-size: 0.85rem;
-    color: var(--cor-da-aba-de-navegacao-modo-claro); 
+    color: var(--cor-navegacao); 
 }
 
 .dot {

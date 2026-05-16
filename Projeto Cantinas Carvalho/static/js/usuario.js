@@ -1,5 +1,4 @@
 const themeToggle = document.getElementById('theme-switch');
-
 const savedTheme = localStorage.getItem('theme');
 
 if (savedTheme === 'dark') {
@@ -57,14 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!msgErro && containerListagem) {
                     msgErro = document.createElement('div');
                     msgErro.id = 'mensagem-pesquisa-vazia';
+
                     msgErro.innerHTML = `
                         <div class="container-msg-vazia" style="text-align:center; padding:3rem 1rem; width:100%;">
-                            <h3 class="txt-principal" style="margin:0;">Usuário não encontrado</h3>
-                            <p class="txt-secundario" style="margin:0.5rem 0 0 0;">
-                                Verifique a ortografia ou tente outro termo.
-                            </p>
+                            <h3 class="txt-principal" style="margin:0; color:#6b3f2a;"> Nenhum usuário encontrado </h3>
+                            <p class="txt-secundario" style="margin:0.5rem 0 0 0; color:#6b3f2a;"> Não encontramos  resultados para sua busca. Tente outro nome ou e-mail.</p>
                         </div>
                     `;
+
                     containerListagem.appendChild(msgErro);
                 }
             } else {

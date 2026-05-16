@@ -8,28 +8,31 @@
 
 {% block content %}
 <section class="sessao-controles">
-
     <div class="search-bar">
       <img src="{{ url_for('static', filename='assets/icons/lupa.png') }}" alt="Lupa de Pesquisa" />
       <input type="text" placeholder="Pesquisar pedido ou cliente..." />
     </div>
 
     <div class="custom-select-wrapper">
-      <select id="filtroGeral" class="select-personalizado">
-        <option value="todos">TODOS</option>
-        <option value="entregue">ENTREGUE</option>
-        <option value="pendente">PENDENTE</option>
-        <option value="preparo">EM PREPARO</option> 
-        <option value="cancelado">CANCELADO</option>
-      </select>
-      <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+      <div class="custom-select" id="filtroGeral">
+        <div class="custom-select-trigger">
+          <span>TODOS</span>
+          <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+        </div>
+        <div class="custom-options">
+          <div class="custom-option" data-value="todos">TODOS</div>
+          <div class="custom-option" data-value="entregue">ENTREGUE</div>
+          <div class="custom-option" data-value="pendente">PENDENTE</div>
+          <div class="custom-option" data-value="preparo">EM PREPARO</div>
+          <div class="custom-option" data-value="cancelado">CANCELADO</div>
+        </div>
+      </div>
+      <input type="hidden" id="inputFiltroGeral" value="todos">
     </div>
-
 </section>
 
 <main class="container-principal">
     <div id="container-listagem" class="listagem-padrao">
-
       <article class="item-lista">
         <div class="card-produto-visual">
           <div class="info-basica">
@@ -40,16 +43,12 @@
               <span class="obs-pedido">⚠️ Sem cebola</span>
             </div>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="info-adicional-meio">
             <p><strong>Pagamento:</strong> Pix</p>
             <p><strong>Retirada:</strong> Balcão</p>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="descricao">
             <p><strong>Data:</strong> 30/03/2026 – 12:15</p>
             <strong>Total: R$ 34,00</strong>
@@ -57,14 +56,19 @@
         </div>
 
         <div class="controles-externos">
-          <div class="custom-select-wrapper">
-            <select class="select-personalizado status-entregue">
-              <option value="entregue" selected>Entregue</option>
-              <option value="pendente">Pendente</option>
-              <option value="preparo">Em Preparo</option>
-              <option value="cancelado">Cancelado</option>
-            </select>
-            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+          <div class="custom-select-wrapper status-wrapper">
+            <div class="custom-select status-entregue">
+              <div class="custom-select-trigger">
+                <span>ENTREGUE</span>
+                <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="entregue">ENTREGUE</div>
+                <div class="custom-option" data-value="pendente">PENDENTE</div>
+                <div class="custom-option" data-value="preparo">EM PREPARO</div>
+                <div class="custom-option" data-value="cancelado">CANCELADO</div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -78,16 +82,12 @@
               <p><strong>Itens:</strong> Misto Quente (1x), Refrigerante (1x)</p>
             </div>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="info-adicional-meio">
             <p><strong>Pagamento:</strong> Cartão de Crédito</p>
             <p><strong>Retirada:</strong> Balcão</p>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="descricao">
             <p><strong>Data:</strong> 31/03/2026 – 12:32</p>
             <strong>Total: R$ 13,00</strong>
@@ -95,14 +95,19 @@
         </div>
 
         <div class="controles-externos">
-          <div class="custom-select-wrapper">
-            <select class="select-personalizado status-pendente">
-              <option value="entregue">Entregue</option>
-              <option value="pendente" selected>Pendente</option>
-              <option value="preparo">Em Preparo</option>
-              <option value="cancelado">Cancelado</option>
-            </select>
-            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+          <div class="custom-select-wrapper status-wrapper">
+            <div class="custom-select status-pendente">
+              <div class="custom-select-trigger">
+                <span>PENDENTE</span>
+                <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="entregue">ENTREGUE</div>
+                <div class="custom-option" data-value="pendente">PENDENTE</div>
+                <div class="custom-option" data-value="preparo">EM PREPARO</div>
+                <div class="custom-option" data-value="cancelado">CANCELADO</div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -116,16 +121,12 @@
               <p><strong>Itens:</strong> Hambúrguer (1x), Suco Natural (1x)</p>
             </div>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="info-adicional-meio">
             <p><strong>Pagamento:</strong> VR</p>
             <p><strong>Retirada:</strong> Balcão</p>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="descricao">
             <p><strong>Data:</strong> 07/04/2026 – 13:05</p>
             <strong>Total: R$ 22,00</strong>
@@ -133,14 +134,19 @@
         </div>
 
         <div class="controles-externos">
-          <div class="custom-select-wrapper">
-            <select class="select-personalizado status-preparo">
-              <option value="preparo" selected>Em Preparo</option>
-              <option value="pendente">Pendente</option>
-              <option value="entregue">Entregue</option>
-              <option value="cancelado">Cancelado</option>
-            </select>
-            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+          <div class="custom-select-wrapper status-wrapper">
+            <div class="custom-select status-preparo">
+              <div class="custom-select-trigger">
+                <span>EM PREPARO</span>
+                <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="entregue">ENTREGUE</div>
+                <div class="custom-option" data-value="pendente">PENDENTE</div>
+                <div class="custom-option" data-value="preparo">EM PREPARO</div>
+                <div class="custom-option" data-value="cancelado">CANCELADO</div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -154,16 +160,12 @@
               <p><strong>Itens:</strong> Hambúrger (1x), Misto Quente (1x), Coxinha (1x)</p>
             </div>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="info-adicional-meio">
             <p><strong>Pagamento:</strong> VA</p>
             <p><strong>Retirada:</strong> Balcão</p>
           </div>
-
           <div class="divisor-vertical"></div>
-
           <div class="descricao">
             <p><strong>Data:</strong> 12/04/2026 – 12:15</p>
             <strong>Total: R$ 30,00</strong>
@@ -171,18 +173,22 @@
         </div>
 
         <div class="controles-externos">
-          <div class="custom-select-wrapper">
-            <select class="select-personalizado status-cancelado">
-              <option value="cancelado" selected>Cancelado</option>
-              <option value="pendente">Pendente</option>
-              <option value="preparo">Em Preparo</option>
-              <option value="entregue">Entregue</option>
-            </select>
-            <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+          <div class="custom-select-wrapper status-wrapper">
+            <div class="custom-select status-cancelado">
+              <div class="custom-select-trigger">
+                <span>CANCELADO</span>
+                <img src="{{ url_for('static', filename='assets/icons/seta_baixo.png') }}" class="seta-icone" />
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="entregue">ENTREGUE</div>
+                <div class="custom-option" data-value="pendente">PENDENTE</div>
+                <div class="custom-option" data-value="preparo">EM PREPARO</div>
+                <div class="custom-option" data-value="cancelado">CANCELADO</div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
-
     </div>
 </main>
 {% endblock %}

@@ -3,170 +3,192 @@
 {% block title %}Produtos{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}" />
 {% endblock %}
 
 {% block content %}
-    <section class="sessao-controles">
-      <div class="search-bar">
-        <img src="{{ url_for('static', filename='assets/icons/lupa.png') }}" alt="Lupa de Pesquisa" />
-        <input type="text" placeholder="Pesquisar produto..." />
-      </div>
+<section class="sessao-controles">
+  <div class="search-bar">
+    <img src="{{ url_for('static', filename='assets/icons/lupa.png') }}" alt="Lupa de Pesquisa" />
+    <input type="text" placeholder="Pesquisar produto..." />
+  </div>
 
-      <button class="container-button" id="btnAbrirNovo">
-        <img src="{{ url_for('static', filename='assets/icons/btn_adicionar_produto.png') }}" alt="Botão Adicionar Produto"/>
-        <span class="btn-novo-texto">Novo</span>
-      </button>
-    </section>
+  <button class="container-button" id="btnAbrirNovo">
+    <img src="{{ url_for('static', filename='assets/icons/btn_adicionar_produto.png') }}"
+      alt="Botão Adicionar Produto" />
+    <span class="btn-novo-texto">Novo</span>
+  </button>
+</section>
 
-    <main class="container-principal">
-      <div id="container-listagem" class="listagem-padrao">
-        <article class="item-lista" data-categoria="lanches">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="{{ url_for('static', filename='assets/images/img_produto_hamburger.png') }}" alt="Hambúrguer"/>
-              <div class="nome-preco">
-                <h3>Hambúrguer</h3>
-                <p>R$ 12,00</p>
-              </div>
-            </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
-            <span class="categoria-produto">Lanches</span>
+<main class="container-principal">
+  <div id="container-listagem" class="listagem-padrao">
+    <article class="item-lista" data-categoria="lanches">
+      <div class="card-produto-visual">
+        <div class="info-basica">
+          <img src="{{ url_for('static', filename='assets/images/img_produto_hamburger.png') }}" alt="Hambúrguer" />
+          <div class="nome-preco">
+            <h3>Hambúrguer</h3>
+            <p>R$ 12,00</p>
           </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">12</div>
-            <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-            <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
-          </div>
-        </article>
-
-        <article class="item-lista" data-categoria="lanches">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="{{ url_for('static', filename='assets/images/img_produto_misto.png') }}" alt="Misto" />
-              <div class="nome-preco">
-                <h3>Misto Quente</h3>
-                <p>R$ 8,00</p>
-              </div>
-            </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
-            <span class="categoria-produto">Lanches</span>
-          </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">9</div>
-            <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-            <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
-          </div>
-        </article>
-
-        <article class="item-lista" data-categoria="pratos">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="{{ url_for('static', filename='assets/images/img_produto_pf.png') }}" alt="PF"/>
-              <div class="nome-preco">
-                <h3>Prato Feito</h3>
-                <p>R$ 18,00</p>
-              </div>
-            </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
-            <span class="categoria-produto">Pratos</span>
-          </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">15</div>
-            <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-            <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
-          </div>
-        </article>
-
-        <article class="item-lista" data-categoria="salgados">
-          <div class="card-produto-visual">
-            <div class="info-basica">
-              <img src="{{ url_for('static', filename='assets/images/img_produto_coxinha.png') }}" alt="Coxinha" />
-              <div class="nome-preco">
-                <h3>Coxinha</h3>
-                <p>R$ 10,00</p>
-              </div>
-            </div>
-            <div class="divisor-vertical"></div>
-            <p class="descricao">Porção com 4 coxinhas crocantes com frango temperado.</p>
-            <span class="categoria-produto">Salgados</span>
-          </div>
-          <div class="controles-externos">
-            <div class="badge-unidade">5</div>
-            <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-            <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
-          </div>
-        </article>
-      </div>
-
-    <div class="modal-unidade" id="modalNovoProduto">
-      <div class="modal-conteudo-novo">
-        <form id="formCadastro">
-          <div class="campo-grupo">
-            <label>Imagem do Produto</label>
-            <div class="dropzone-imagem">
-              <p>Clique para adicionar a imagem</p>
-            </div>
-          </div>
-          <div class="campo-grupo">
-            <label>Nome do Produto</label>
-            <input type="text" name="nome" required />
-          </div>
-          <div class="linha-dupla">
-            <div class="campo-grupo">
-              <label>Preço</label>
-              <input type="text" name="preco" required />
-            </div>
-            <div class="campo-grupo">
-              <label>Quantidade</label>
-              <input type="number" name="quantidade" required />
-            </div>
-          </div>
-          <div class="linha-dupla">
-            <div class="campo-grupo">
-              <label>Descrição</label>
-              <textarea name="descricao"></textarea>
-            </div>
-            <div class="campo-grupo">
-              <label>Categoria</label>
-              <select name="categoria" required>
-                <option value="salgados">Salgados</option>
-                <option value="lanches">Lanches</option>
-                <option value="doces">Doces</option>
-                <option value="bebidas">Bebidas</option>
-                <option value="pratos">Pratos</option>
-              </select>
-            </div>
-          </div>
-          <div class="campo-grupo">
-            <label class="checkbox-linha">
-              <input type="checkbox" name="disponivel" checked />
-              <span>Produto Disponível</span>
-            </label>
-          </div>
-          <div class="rodape-modal-botoes">
-            <button type="button" class="btn-cancelar-novo" id="btnFecharNovo">CANCELAR</button>
-            <button type="submit" class="btn-cadastrar-novo" id="btnSalvar">SALVAR ALTERAÇÕES</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="modal-unidade" id="modalExcluir">
-      <div class="modal-conteudo-pequeno">
-        <h3>Excluir Produto?</h3>
-        <p>Essa ação não pode ser desfeita</p>
-        <div class="botoes-modal-pequeno">
-          <button id="btnConfirmarExcluir" class="btn-confirmar-excluir">Excluir </button>
-          <button id="btnCancelarExcluir" class="btn-cancelar-modal">Cancelar</button>
         </div>
+        <div class="divisor-vertical"></div>
+        <p class="descricao">Pão macio, hambúrguer grelhado, queijo derretido e molho especial.</p>
+        <span class="categoria-produto">Lanches</span>
+      </div>
+      <div class="controles-externos">
+        <div class="badge-unidade">12</div>
+        <button class="btn-circular btn-editar"><img
+            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img
+            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+      </div>
+    </article>
+
+    <article class="item-lista" data-categoria="lanches">
+      <div class="card-produto-visual">
+        <div class="info-basica">
+          <img src="{{ url_for('static', filename='assets/images/img_produto_misto.png') }}" alt="Misto" />
+          <div class="nome-preco">
+            <h3>Misto Quente</h3>
+            <p>R$ 8,00</p>
+          </div>
+        </div>
+        <div class="divisor-vertical"></div>
+        <p class="descricao">Pão tostado com presunto e queijo derretido.</p>
+        <span class="categoria-produto">Lanches</span>
+      </div>
+      <div class="controles-externos">
+        <div class="badge-unidade">9</div>
+        <button class="btn-circular btn-editar"><img
+            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img
+            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+      </div>
+    </article>
+
+    <article class="item-lista" data-categoria="pratos">
+      <div class="card-produto-visual">
+        <div class="info-basica">
+          <img src="{{ url_for('static', filename='assets/images/img_produto_pf.png') }}" alt="PF" />
+          <div class="nome-preco">
+            <h3>Prato Feito</h3>
+            <p>R$ 18,00</p>
+          </div>
+        </div>
+        <div class="divisor-vertical"></div>
+        <p class="descricao">Arroz, feijão, carne grelhada e acompanhamento do dia.</p>
+        <span class="categoria-produto">Pratos</span>
+      </div>
+      <div class="controles-externos">
+        <div class="badge-unidade">15</div>
+        <button class="btn-circular btn-editar"><img
+            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img
+            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+      </div>
+    </article>
+
+    <article class="item-lista" data-categoria="salgados">
+      <div class="card-produto-visual">
+        <div class="info-basica">
+          <img src="{{ url_for('static', filename='assets/images/img_produto_coxinha.png') }}" alt="Coxinha" />
+          <div class="nome-preco">
+            <h3>Coxinha</h3>
+            <p>R$ 10,00</p>
+          </div>
+        </div>
+        <div class="divisor-vertical"></div>
+        <p class="descricao">Porção com 4 coxinhas crocantes com frango temperado.</p>
+        <span class="categoria-produto">Salgados</span>
+      </div>
+      <div class="controles-externos">
+        <div class="badge-unidade">5</div>
+        <button class="btn-circular btn-editar"><img
+            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img
+            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+      </div>
+    </article>
+  </div>
+
+  <div class="modal-unidade" id="modalNovoProduto">
+    <div class="modal-conteudo-novo">
+      <form id="formCadastro">
+        <div class="campo-grupo">
+          <label>Imagem do Produto</label>
+          <div class="dropzone-imagem">
+            <p>Clique para adicionar a imagem</p>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label>Nome do Produto</label>
+          <input type="text" name="nome" required />
+        </div>
+
+        <div class="linha-dupla">
+          <div class="campo-grupo">
+            <label>Preço</label>
+            <input type="text" name="preco" required />
+          </div>
+          <div class="campo-grupo">
+            <label>Quantidade</label>
+            <input type="number" name="quantidade" required />
+          </div>
+        </div>
+
+        <div class="linha-dupla">
+          <div class="campo-grupo">
+            <label>Descrição</label>
+            <textarea name="descricao"></textarea>
+          </div>
+
+          <div class="campo-grupo">
+            <label>Categoria</label>
+            <div class="custom-select-wrapper">
+              <div class="custom-select" id="customSelect">
+                <div class="custom-select-trigger">
+                  <span>Selecionar categoria</span>
+                  <div class="arrow"></div>
+                </div>
+                <div class="custom-options">
+                  <span class="custom-option" data-value="salgados">Salgados</span>
+                  <span class="custom-option" data-value="lanches">Lanches</span>
+                  <span class="custom-option" data-value="doces">Doces</span>
+                  <span class="custom-option" data-value="bebidas">Bebidas</span>
+                  <span class="custom-option" data-value="pratos">Pratos</span>
+                </div>
+              </div>
+              <input type="hidden" name="categoria" id="inputCategoria" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkbox-linha">
+          <input type="checkbox" name="disponivel">
+          <span>Produto Disponível</span>
+        </div>
+
+        <div class="rodape-modal-botoes">
+          <button type="button" class="btn-cancelar-novo" id="btnFecharNovo">CANCELAR</button>
+          <button type="submit" class="btn-cadastrar-novo" id="btnSalvar">SALVAR ALTERAÇÕES</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-unidade" id="modalExcluir">
+    <div class="modal-conteudo-pequeno">
+      <h3>Excluir Produto?</h3>
+      <p>Essa ação não pode ser desfeita</p>
+      <div class="botoes-modal-pequeno">
+        <button id="btnConfirmarExcluir" class="btn-confirmar-excluir">Excluir </button>
+        <button id="btnCancelarExcluir" class="btn-cancelar-modal">Cancelar</button>
       </div>
     </div>
-{% endblock %}
+  </div>
+  {% endblock %}
 
-{% block scripts %}
-    <script src="{{ url_for('static', filename='js/produto.js') }}"></script>
-{% endblock %}
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='js/produto.js') }}"></script>
+  {% endblock %}
