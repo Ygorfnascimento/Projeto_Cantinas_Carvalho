@@ -2,9 +2,7 @@
 
 {% block title %}Administrador - Usuários{% endblock %}
 
-{% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/usuario.css') }}" />
-{% endblock %}
+{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename='css/usuario.css') }}" /> {% endblock %}
 
 {% block content %}
   <section class="sessao-controles">
@@ -26,7 +24,6 @@
   <div class="container-principal-wrapper">
     <main class="container-principal">
       <div id="container-listagem">
-
         <article class="dados card-ativo">
           <div class="coluna col-nome">
             <h3>Nome</h3>
@@ -126,12 +123,9 @@
             </div>
           </div>
         </article>
-        
       </div>
     </main>
   </div>
 {% endblock %}
 
-{% block scripts %}
-    <script src="{{ url_for('static', filename='js/usuario.js') }}"></script>
-{% endblock %}
+{% block scripts %} <script src="{{ url_for('static', filename='js/usuario.js') }}"></script> {% endblock %}

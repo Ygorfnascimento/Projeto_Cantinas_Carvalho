@@ -1,373 +1,360 @@
-let itemSendoEditado=null
-itemParaDeletar=null
-indiceOriginal=null
-itens=[];
+const qs = (selector, context = document) => context.querySelector(selector);
+const qsa = (selector, context = document) => [...context.querySelectorAll(selector)];
 
-const qs=(s,c=document)=>c.querySelector(s),
-qsa=(s,c=document)=>[...c.querySelectorAll(s)];
+let itemSendoEditado = null;
+let itemParaDeletar = null;
+let indiceOriginal = null;
+let itens = [];
 
-const containerListagem=qs('#container-listagem'),
+const containerListagem = qs('#container-listagem');
+const modalNovo = qs('#modalNovoProduto');
+const modalExcluir = qs('#modalExcluir');
+const formCadastro = qs('#formCadastro');
+const dropzone = qs('.dropzone-imagem');
+const inputPesquisa = qs('.search-bar input');
+const btnNovo = qs('#btnAbrirNovo');
+const btnFecharNovo = qs('#btnFecharNovo');
+const btnSubmit = qs('#btnSalvar');
+const btnConfirmarExcluir = qs('#btnConfirmarExcluir');
+const btnCancelarExcluir = qs('#btnCancelarExcluir');
+const customSelect = qs('#customSelect');
+const trigger = qs( '.custom-select-trigger', customSelect);
+const hiddenInputCategoria = qs('#inputCategoria');
+const options = qsa( '.custom-option', customSelect);
+const inputFile = document.createElement('input');
 
-modalNovo=qs('#modalNovoProduto'),
-modalExcluir=qs('#modalExcluir'),
-formCadastro=qs('#formCadastro'),
-dropzone=qs('.dropzone-imagem'),
-inputPesquisa=qs('.search-bar input'),
-themeToggle=qs('#theme-switch'),
-btnNovo=qs('#btnAbrirNovo'),
-btnFecharNovo=qs('#btnFecharNovo'),
-btnSubmit=qs('#btnSalvar'),
-btnConfirmarExcluir=qs('#btnConfirmarExcluir'),
-btnCancelarExcluir=qs('#btnCancelarExcluir'),
-customSelect=qs('#customSelect'),
-trigger=qs('.custom-select-trigger',customSelect),
-hiddenInputCategoria=qs('#inputCategoria'),
-options=qsa('.custom-option',customSelect);
+inputFile.type = 'file';
+inputFile.accept = 'image/*';
 
-const inputFile=document.createElement('input');
+function getCampos() {
+    return {
+        nome: qs('[name="nome"]'),
+        preco: qs('[name="preco"]'),
+        quantidade: qs('[name="quantidade"]'),
+        descricao: qs('[name="descricao"]'),
+        categoria: qs('[name="categoria"]'),
+        disponivel: qs('[name="disponivel"]')
+    };
+}
 
-inputFile.type='file';
-inputFile.accept='image/*';
+function refreshItens() {
+    itens = qsa(
+        '.item-lista',
+        containerListagem
+    );
+}
 
-const getCampos=()=>({
-    nome:qs('[name="nome"]'),
-    preco:qs('[name="preco"]'),
-    quantidade:qs('[name="quantidade"]'),
-    descricao:qs('[name="descricao"]'),
-    categoria:qs('[name="categoria"]'),
-    disponivel:qs('[name="disponivel"]')
-});
+const mensagemVazia = document.createElement('div');
 
-const refreshItens=()=>itens=qsa('.item-lista',containerListagem);
+mensagemVazia.id = 'mensagem-pesquisa-vazia';
 
-const mensagemVazia=document.createElement('div');
-
-mensagemVazia.id='mensagem-pesquisa-vazia';
-
-mensagemVazia.innerHTML=`
+mensagemVazia.innerHTML = `
 <div style="text-align:center;padding:3rem 1rem;">
-    <h3 class="msg-titulo">Nenhum produto foi encontrado</h3>
-    <p class="msg-sub"> Não encontramos resultados para sua busca. Tente usar outro nome, categoria ou verifique a ortografia.</p>
+    <h3 class="msg-titulo"> Nenhum produto foi encontrado </h3>
+
+    <p class="msg-sub"> Não encontramos resultados para sua busca. Tente outro nome ou categoria. </p>
 </div>
 `;
 
-mensagemVazia.style.display='none';
+mensagemVazia.style.display = 'none';
 
-containerListagem?.appendChild(mensagemVazia);
+containerListagem?.appendChild(
+    mensagemVazia
+);
 
-const savedTheme=localStorage.getItem('theme');
+function atualizarSelectCustomizado(valor) {
+    if (!valor) {
+        hiddenInputCategoria.value = '';
 
-if(savedTheme==='dark'){
-    document.body.classList.add('dark-theme');
-    if(themeToggle) themeToggle.checked=true;
-}
+        qs('span', trigger).innerText = 'Selecionar categoria';
 
-themeToggle?.addEventListener('change',()=>{
-    document.body.classList.toggle('dark-theme');
+        options.forEach(option => {
 
-    localStorage.setItem(
-        'theme',
-        document.body.classList.contains('dark-theme')
-        ? 'dark'
-        : 'light'
-    );
-});
-
-function atualizarSelectCustomizado(valor){
-    if(!valor){
-        hiddenInputCategoria.value='';
-        qs('span',trigger).innerText='Selecionar categoria';
-
-        options.forEach(opt=>
-            opt.classList.remove('selected')
-        );
-
+            option.classList.remove('selected');
+        });
         return;
     }
 
-    hiddenInputCategoria.value=valor;
+    hiddenInputCategoria.value = valor;
 
-    const opcaoAlvo=options.find(
-        opt=>opt.dataset.value===valor
+    const opcaoAlvo = options.find(option =>
+        option.dataset.value === valor
     );
 
-    if(!opcaoAlvo) return;
+    if (!opcaoAlvo) return;
 
-    qs('span',trigger).innerText=opcaoAlvo.innerText;
+    qs('span', trigger).innerText = opcaoAlvo.innerText;
 
-    options.forEach(opt=>
-        opt.classList.remove('selected')
-    );
+    options.forEach(option => {
+        option.classList.remove('selected');
+    });
 
     opcaoAlvo.classList.add('selected');
 }
 
-trigger?.addEventListener('click',e=>{
+trigger?.addEventListener('click', e => {
     e.stopPropagation();
     customSelect.classList.toggle('open');
 });
 
-options.forEach(option=>{
-    option.addEventListener('click',()=>{
-        atualizarSelectCustomizado(option.dataset.value);
+options.forEach(option => {
+    option.addEventListener('click', () => {
+        atualizarSelectCustomizado(
+            option.dataset.value
+        );
+
         customSelect.classList.remove('open');
     });
 });
 
-dropzone?.addEventListener('click',()=>inputFile.click());
+dropzone?.addEventListener('click', () => {
+    inputFile.click();
+});
 
-inputFile.addEventListener('change',()=>{
-    const file=inputFile.files[0];
+inputFile.addEventListener('change', () => {
 
-    if(!file) return;
+    const file = inputFile.files[0];
 
-    if(file.size>2*1024*1024){
+    if (!file) return;
+
+    if (file.size > 2 * 1024 * 1024) {
         alert('Imagem muito grande (máx: 2MB)');
         return;
     }
 
-    const reader=new FileReader();
+    const reader = new FileReader();
 
-    reader.onload=e=>{
-        dropzone.innerHTML=`
-            <img src="${e.target.result}" id="img-atual">
+    reader.onload = e => {
+        dropzone.innerHTML = `
+            <img src="${e.target.result}" id="img-atual" >
         `;
     };
 
     reader.readAsDataURL(file);
 });
 
-inputPesquisa?.addEventListener('input',()=>{
-    const termo=inputPesquisa.value.toLowerCase().trim();
+inputPesquisa?.addEventListener('input', () => {
 
-    let encontrou=false;
+    const termo = inputPesquisa.value .toLowerCase() .trim();
+    let encontrou = false;
 
-    itens.forEach(item=>{
-        const nome=qs('h3',item)?.innerText.toLowerCase()||'',
-        categoria=item.dataset.categoria?.toLowerCase()||'',
-        descricao=qs('.descricao',item)?.innerText.toLowerCase()||'';
+    itens.forEach(item => {
+        const nome = qs('h3', item) ?.innerText .toLowerCase() || '';
+        const categoria = item.dataset.categoria ?.toLowerCase() || '';
+        const descricao = qs('.descricao', item) ?.innerText .toLowerCase() || '';
+        const match = nome.includes(termo) || categoria.includes(termo) || descricao.includes(termo);
 
-        const match=
-            nome.includes(termo) ||
-            categoria.includes(termo) ||
-            descricao.includes(termo);
+        item.style.display = match ? 'flex' : 'none';
 
-        item.style.display=match?'flex':'none';
-
-        if(match) encontrou=true;
+        if (match) {
+            encontrou = true;
+        }
     });
 
-    mensagemVazia.style.display=
-        (!encontrou && termo)
-        ? 'block'
-        : 'none';
+    mensagemVazia.style.display = (!encontrou && termo) ? 'block' : 'none';
 });
 
-function vincularEventos(item){
-    const btnEditar=qs('.btn-editar',item),
-    btnLixeira=qs('.btn-lixeira',item);
+function criarHTMLProduto({
+    nome,
+    preco,
+    descricao,
+    quantidade,
+    categoria,
+    img,
+    indisponivel
+}) {
 
-    btnEditar?.addEventListener('click',()=>{
-        itemSendoEditado=item;
+    return `
+    <div class="card-produto-visual">
+        <div class="info-basica">
+            <img src="${img}">
 
-        indiceOriginal=qsa(
-            '.item-lista',
-            containerListagem
-        ).indexOf(item);
+            <div class="nome-preco">
+                <h3>${nome}</h3>
+                <p>R$ ${preco}</p>
+            </div>
+        </div>
 
-        const campos=getCampos(),
+        <div class="divisor-vertical"></div>
 
-        nome=qs('h3',item)?.innerText||'',
-        preco=qs('.nome-preco p',item)?.innerText.replace('R$ ','')||'',
-        descricao=qs('.descricao',item)?.innerText||'',
-        quantidade=qs('.badge-unidade',item)?.innerText.replace(/\D/g,'')||'',
-        img=qs('img',item)?.src||'',
-        categoria=item.dataset.categoria||'',
-        indisponivel=item.classList.contains('indisponivel');
+        <p class="descricao">  ${descricao} </p>
 
-        campos.nome.value=nome;
-        campos.preco.value=preco;
-        campos.quantidade.value=quantidade;
-        campos.descricao.value=descricao;
-        campos.disponivel.checked=!indisponivel;
+        <div class="area-extra">
+            <span class="categoria-produto"> ${categoria || 'Sem categoria'} </span>
+            <span class="status-indisponivel" style=" display: ${indisponivel ? 'inline-block' : 'none'} " > Indisponível</span>
+        </div>
 
-        atualizarSelectCustomizado(categoria);
+    </div>
 
-        dropzone.innerHTML=img
+    <div class="controles-externos">
+        <div class="badge-unidade"> ${quantidade}</div>
+
+        <button class="btn-circular btn-editar" type="button">
+            <img src="/static/assets/icons/lapis.png">
+        </button>
+
+        <button class="btn-circular btn-lixeira" type="button">
+            <img src="/static/assets/icons/lixeira.png">
+        </button>
+    </div>
+    `;
+}
+
+function vincularEventos(item) {
+    const btnEditar = qs('.btn-editar', item);
+    const btnLixeira = qs('.btn-lixeira', item);
+
+    btnEditar?.addEventListener('click', () => {
+        itemSendoEditado = item;
+        indiceOriginal = qsa( '.item-lista', containerListagem).indexOf(item);
+
+        const campos = getCampos();
+        const nome = qs('h3', item)?.innerText || '';
+        const preco = qs('.nome-preco p', item) ?.innerText .replace('R$ ', '') || '';
+        const descricao = qs('.descricao', item) ?.innerText || '';
+        const quantidade = qs('.badge-unidade', item) ?.innerText .replace(/\D/g, '') || '';
+        const img = qs('img', item)?.src || '';
+        const categoria = item.dataset.categoria || '';
+        const indisponivel = item.classList.contains( 'indisponivel' );
+
+        campos.nome.value = nome;
+        campos.preco.value = preco;
+        campos.quantidade.value = quantidade;
+        campos.descricao.value = descricao;
+        campos.disponivel.checked = !indisponivel;
+
+        atualizarSelectCustomizado(
+            categoria
+        );
+
+        dropzone.innerHTML = img
             ? `<img src="${img}" id="img-atual">`
             : '<p>Clique para adicionar a imagem</p>';
 
-        btnSubmit.innerText='SALVAR ALTERAÇÕES';
-        modalNovo.style.display='flex';
+        btnSubmit.innerText = 'SALVAR ALTERAÇÕES';
+
+        modalNovo.style.display = 'flex';
     });
 
-    btnLixeira?.addEventListener('click',()=>{
-        itemParaDeletar=item;
-        modalExcluir.style.display='flex';
+    btnLixeira?.addEventListener('click', () => {
+        itemParaDeletar = item;
+        modalExcluir.style.display = 'flex';
     });
 }
 
-btnConfirmarExcluir?.addEventListener('click',()=>{
-    itemParaDeletar?.remove();
-    modalExcluir.style.display='none';
-    refreshItens();
-});
+btnConfirmarExcluir?.addEventListener(
+    'click',
+    () => {
+        itemParaDeletar?.remove();
+        modalExcluir.style.display = 'none';
+        refreshItens();
+    }
+);
 
-btnCancelarExcluir?.addEventListener('click',()=>{
-    modalExcluir.style.display='none';
-});
+btnCancelarExcluir?.addEventListener(
+    'click',
+    () => {
+        modalExcluir.style.display = 'none';
+    }
+);
 
-btnNovo?.addEventListener('click',()=>{
-    itemSendoEditado=null;
-    indiceOriginal=null;
-
+btnNovo?.addEventListener('click', () => {
+    itemSendoEditado = null;
+    indiceOriginal = null;
     formCadastro.reset();
-
     atualizarSelectCustomizado('');
-
-    getCampos().disponivel.checked=true;
-
-    dropzone.innerHTML=
-        '<p>Clique para adicionar a imagem</p>';
-
-    btnSubmit.innerText='CADASTRAR';
-
-    modalNovo.style.display='flex';
+    getCampos().disponivel.checked = true;
+    dropzone.innerHTML = '<p>Clique para adicionar a imagem</p>';
+    btnSubmit.innerText = 'CADASTRAR';
+    modalNovo.style.display = 'flex';
 });
 
-const fecharModal=()=>{
-    modalNovo.style.display='none';
+function fecharModal() {
+    modalNovo.style.display = 'none';
     formCadastro.reset();
-    itemSendoEditado=null;
-    indiceOriginal=null;
+    itemSendoEditado = null;
+    indiceOriginal = null;
     atualizarSelectCustomizado('');
-};
+}
 
 btnFecharNovo?.addEventListener(
     'click',
     fecharModal
 );
 
-formCadastro?.addEventListener('submit',e=>{
-    e.preventDefault();
+formCadastro?.addEventListener(
+    'submit',
+    e => {
+        e.preventDefault();
 
-    const campos=getCampos(),
-    imgPadrao='/static/assets/images/img_produto_hamburger.png',
-    img=qs('#img-atual')?.src||imgPadrao,
-    indisponivel=!campos.disponivel.checked,
-    categoria=hiddenInputCategoria.value;
+        const campos = getCampos();
+        const imgPadrao = '/static/assets/images/img_produto_hamburger.png';
+        const img = qs('#img-atual')?.src || imgPadrao;
+        const indisponivel = !campos.disponivel.checked;
+        const categoria = hiddenInputCategoria.value;
+        const html = criarHTMLProduto({ nome: campos.nome.value, preco: campos.preco.value, descricao: campos.descricao.value, quantidade: campos.quantidade.value, categoria, img, indisponivel });
 
-    const html=`
-    <div class="card-produto-visual">
-        <div class="info-basica">
-            <img src="${img}">
+        if (itemSendoEditado) {
+            itemSendoEditado.innerHTML = html;
+            itemSendoEditado.classList.toggle(
+                'indisponivel',
+                indisponivel
+            );
 
-            <div class="nome-preco">
-                <h3>${campos.nome.value}</h3>
-                <p>R$ ${campos.preco.value}</p>
-            </div>
-        </div>
+            itemSendoEditado.dataset.categoria =
+                categoria;
 
-        <div class="divisor-vertical"></div>
+            vincularEventos(
+                itemSendoEditado
+            );
 
-        <p class="descricao">
-            ${campos.descricao.value}
-        </p>
+        } else {
+            const novo = document.createElement('article');
 
-        <div class="area-extra">
-            <span class="categoria-produto">
-                ${categoria || 'Sem categoria'}
-            </span>
+            novo.className = 'item-lista';
 
-            <span
-                class="status-indisponivel"
-                style="
-                    display:
-                    ${
-                        indisponivel
-                        ? 'inline-block'
-                        : 'none'
-                    }
-                "
-            >
-                Indisponível
-            </span>
-        </div>
-    </div>
+            if (indisponivel) {
+                novo.classList.add(
+                    'indisponivel'
+                );
+            }
 
-    <div class="controles-externos">
-        <div class="badge-unidade">
-            ${campos.quantidade.value}
-        </div>
+            novo.dataset.categoria =  categoria;
 
-        <button
-            class="btn-circular btn-editar"
-            type="button"
-        >
-            <img src="/static/assets/icons/lapis.png">
-        </button>
+            novo.innerHTML = html;
 
-        <button
-            class="btn-circular btn-lixeira"
-            type="button"
-        >
-            <img src="/static/assets/icons/lixeira.png">
-        </button>
-    </div>
-    `;
+            containerListagem.insertBefore(
+                novo,
+                containerListagem.firstChild
+            );
 
-    if(itemSendoEditado){
-        itemSendoEditado.innerHTML=html;
-
-        itemSendoEditado.classList.toggle(
-            'indisponivel',
-            indisponivel
-        );
-
-        itemSendoEditado.dataset.categoria=
-            categoria;
-
-        vincularEventos(itemSendoEditado);
-
-    } else {
-        const novo=document.createElement('article');
-
-        novo.className='item-lista';
-
-        if(indisponivel){
-            novo.classList.add('indisponivel');
+            vincularEventos(novo);
         }
-
-        novo.dataset.categoria=categoria;
-
-        novo.innerHTML=html;
-
-        containerListagem.insertBefore(
-            novo,
-            containerListagem.firstChild
-        );
-
-        vincularEventos(novo);
+        
+        refreshItens();
+        fecharModal();
     }
+);
 
-    refreshItens();
-    fecharModal();
-});
-
-window.addEventListener('click',e=>{
-    if(e.target===modalNovo){
+window.addEventListener('click', e => {
+    if (e.target === modalNovo) {
         fecharModal();
     }
 
-    if(e.target===modalExcluir){
-        modalExcluir.style.display='none';
+    if (e.target === modalExcluir) {
+        modalExcluir.style.display = 'none';
     }
 
-    if(!customSelect.contains(e.target)){
-        customSelect.classList.remove('open');
+    if (
+        customSelect &&
+        !customSelect.contains(e.target)
+    ) {
+
+        customSelect.classList.remove(
+            'open'
+        );
     }
 });
 
 refreshItens();
-
 itens.forEach(vincularEventos);

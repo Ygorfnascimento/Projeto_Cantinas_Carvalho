@@ -1,23 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const inputPesquisa = document.querySelector('.search-bar input');
-    const containerListagem = document.getElementById('container-listagem');
-    const themeToggle = document.getElementById('theme-switch');
+    const containerListagem = document.getElementBy ('container-listagem');
     const filtroGeralWrapper = document.getElementById('filtroGeral');
     const inputFiltroGeral = document.getElementById('inputFiltroGeral');
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        if (themeToggle) themeToggle.checked = true;
-    }
-
-    themeToggle?.addEventListener('change', () => {
-        document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        filtrar(); 
-    });
-
     const mensagemVazia = document.createElement('div');
+
     mensagemVazia.id = 'msg-vazio';
     mensagemVazia.innerHTML = `
         <div style="text-align:center; padding: 4rem 1rem;">
@@ -30,15 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     containerListagem?.appendChild(mensagemVazia);
 
     function getItens() {
-        return Array.from(containerListagem?.querySelectorAll('.item-lista') || [])
-            .filter(i => i.id !== 'msg-vazio');
+        return Array.from(containerListagem?.querySelectorAll('.item-lista') || []) .filter(i => i.id !== 'msg-vazio');
     }
 
     function filtrar() {
         const termo = (inputPesquisa?.value || '').toLowerCase().trim();
         const filtro = inputFiltroGeral?.value || 'todos';
         const isDark = document.body.classList.contains('dark-theme');
-
+        
         let encontrou = false;
 
         getItens().forEach(item => {
@@ -48,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const statusLabel = item.querySelector('.controles-externos .custom-select-trigger span')?.innerText.toLowerCase() || '';
             const matchTexto = nome.includes(termo) || id.includes(termo) || data.includes(termo);
             const matchStatus = filtro === 'todos' || statusLabel.includes(filtro);
-
             const show = matchTexto && matchStatus;
+
             item.style.display = show ? 'flex' : 'none';
 
             if (show) encontrou = true;

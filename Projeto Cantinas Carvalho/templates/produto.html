@@ -2,9 +2,7 @@
 
 {% block title %}Produtos{% endblock %}
 
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}" />
-{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}" />{% endblock %}
 
 {% block content %}
 <section class="sessao-controles">
@@ -14,8 +12,7 @@
   </div>
 
   <button class="container-button" id="btnAbrirNovo">
-    <img src="{{ url_for('static', filename='assets/icons/btn_adicionar_produto.png') }}"
-      alt="Botão Adicionar Produto" />
+    <img src="{{ url_for('static', filename='assets/icons/btn_adicionar_produto.png') }}" alt="Botão Adicionar Produto" />
     <span class="btn-novo-texto">Novo</span>
   </button>
 </section>
@@ -37,10 +34,8 @@
       </div>
       <div class="controles-externos">
         <div class="badge-unidade">12</div>
-        <button class="btn-circular btn-editar"><img
-            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-        <button class="btn-circular btn-lixeira"><img
-            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+        <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
       </div>
     </article>
 
@@ -59,10 +54,8 @@
       </div>
       <div class="controles-externos">
         <div class="badge-unidade">9</div>
-        <button class="btn-circular btn-editar"><img
-            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-        <button class="btn-circular btn-lixeira"><img
-            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+        <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
       </div>
     </article>
 
@@ -81,10 +74,8 @@
       </div>
       <div class="controles-externos">
         <div class="badge-unidade">15</div>
-        <button class="btn-circular btn-editar"><img
-            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-        <button class="btn-circular btn-lixeira"><img
-            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+        <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
       </div>
     </article>
 
@@ -103,10 +94,8 @@
       </div>
       <div class="controles-externos">
         <div class="badge-unidade">5</div>
-        <button class="btn-circular btn-editar"><img
-            src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
-        <button class="btn-circular btn-lixeira"><img
-            src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
+        <button class="btn-circular btn-editar"><img src="{{ url_for('static', filename='assets/icons/lapis.png') }}" /></button>
+        <button class="btn-circular btn-lixeira"><img src="{{ url_for('static', filename='assets/icons/lixeira.png') }}" /></button>
       </div>
     </article>
   </div>
@@ -189,6 +178,4 @@
   </div>
   {% endblock %}
 
-  {% block scripts %}
-  <script src="{{ url_for('static', filename='js/produto.js') }}"></script>
-  {% endblock %}
+  {% block scripts %} <script src="{{ url_for('static', filename='js/produto.js') }}"></script> {% endblock %}

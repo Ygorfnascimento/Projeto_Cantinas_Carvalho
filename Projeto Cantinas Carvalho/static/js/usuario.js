@@ -1,26 +1,6 @@
-const themeToggle = document.getElementById('theme-switch');
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme === 'dark') {
-    document.body.classList.add('dark-theme');
-    if (themeToggle) themeToggle.checked = true;
-}
-
-if (themeToggle) {
-    themeToggle.addEventListener('change', () => {
-        document.body.classList.toggle('dark-theme');
-
-        localStorage.setItem(
-            'theme',
-            document.body.classList.contains('dark-theme') ? 'dark' : 'light'
-        );
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const inputBusca = document.querySelector('.search-bar input');
     const containerListagem = document.getElementById('container-listagem');
-
     const qtdAtivos = document.querySelectorAll('.numero-stats')[0];
     const qtdInativos = document.querySelectorAll('.numero-stats')[1];
 
@@ -42,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cardsUsuarios.forEach(card => {
                 const nome = card.querySelector('.txt-principal')?.textContent.toLowerCase() || '';
                 const email = card.querySelector('.txt-secundario')?.textContent.toLowerCase() || '';
-
                 const match = nome.includes(termo) || email.includes(termo);
 
                 card.style.display = match ? 'flex' : 'none';
@@ -56,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!msgErro && containerListagem) {
                     msgErro = document.createElement('div');
                     msgErro.id = 'mensagem-pesquisa-vazia';
-
                     msgErro.innerHTML = `
                         <div class="container-msg-vazia" style="text-align:center; padding:3rem 1rem; width:100%;">
                             <h3 class="txt-principal" style="margin:0; color:#6b3f2a;"> Nenhum usuário encontrado </h3>
@@ -81,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!card) return;
 
             const badgeStatus = card.querySelector('.badge-status');
-
             if (!badgeStatus) return;
 
             if (checkbox.checked) {

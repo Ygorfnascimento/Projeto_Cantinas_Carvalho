@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantinas Carvalho - {% block title %}{% endblock %}</title>
+    <title> Cantinas Carvalho - {% block title %}{% endblock %} </title>
     <link rel="icon" href="{{ url_for('static', filename='assets/icons/logo.png') }}" />
     {% block head %}{% endblock %}
 </head>
+
 <body>
     <header class="header-superior">
         <div id="logo-container">
-            <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" id="logo" alt="Logo Cantinas Carvalho"/>
+            <img src="{{ url_for('static', filename='assets/icons/logo.png') }}" id="logo" alt="Logo Cantinas Carvalho" />
         </div>
+
         <label class="theme-toggle">
             <input type="checkbox" id="theme-switch" />
             <span class="slider"></span>
@@ -19,14 +22,22 @@
     </header>
 
     <nav class="container-pages">
-        <div class="container-pages-links" id="nav-links">
-            <a href="{{ url_for('produtos') }}" class="pages-links">Produtos</a>
-            <a href="{{ url_for('pedidos') }}" class="pages-links">Pedidos</a>
-            <a href="{{ url_for('relatorios') }}" class="pages-links">Relatórios</a>
-            <a href="{{ url_for('usuarios') }}" class="pages-links">Usuários</a>
-        </div>
+        <ul class="container-pages-links" id="nav-links">
+            <li>
+                <a href="{{ url_for('produtos') }}" class="{{ 'pages-links-pagina-atual' if request.endpoint == 'produtos' else 'pages-links' }}"> Produtos </a>
+            </li>
+            <li>
+                <a href="{{ url_for('pedidos') }}" class="{{ 'pages-links-pagina-atual' if request.endpoint == 'pedidos' else 'pages-links' }}"> Pedidos </a>
+            </li>
+            <li>
+                <a href="{{ url_for('relatorios') }}" class="{{ 'pages-links-pagina-atual' if request.endpoint == 'relatorios' else 'pages-links' }}"> Relatórios </a>
+            </li>
+            <li>
+                <a href="{{ url_for('usuarios') }}" class="{{ 'pages-links-pagina-atual' if request.endpoint == 'usuarios' else 'pages-links' }}"> Usuários</a>
+            </li>
+        </ul>
 
-        <button class="hamburger" id="menu-toggle" aria-label="Menu">
+        <button class="hamburger" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
             <span></span>
             <span></span>
             <span></span>
@@ -35,16 +46,10 @@
 
     <div class="linha-decorativa"></div>
 
-    {% block content %}{% endblock %} {% block scripts %} {% endblock %}
+    <main> {% block content %}{% endblock %} </main>
 
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const menuLinks = document.querySelector('.container-pages-links');
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
 
-        hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        menuLinks.classList.toggle('active');
-        });
-    </script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

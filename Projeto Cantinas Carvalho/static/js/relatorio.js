@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-switch');
     const filtroGeral = document.getElementById('filtroGeral');
-
     const dadosRelatorios = {
         "ult_7-d": {
             produtos: { "Misto Quente": 85, "Prato Feito": 40, "Coxinhas": 90, "Hambúrguer": 15 },
@@ -99,17 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => card.style.transform = '', 150);
         });
     }
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        if (themeToggle) themeToggle.checked = true;
-    }
-
-    themeToggle?.addEventListener('change', () => {
-        document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-    });
 
     filtroGeral?.addEventListener('change', (e) => atualizarDashboard(e.target.value));
     atualizarDashboard("ult_7-d");
